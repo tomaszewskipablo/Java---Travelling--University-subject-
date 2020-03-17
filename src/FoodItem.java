@@ -21,6 +21,13 @@ public class FoodItem {
     public FoodItem() {
     }
 
+    public FoodItem(String label, double volume, double weight, Date expirationDate) {
+        this(label);
+        this.volume = volume;
+        this.weight = weight;
+        this.expirationDate = expirationDate;
+    }
+
     public String toString() {
         return "Label: '" + this.label + "', Volume: '" + this.volume + ", Weight: '" + this.weight + ", ExpirationDate: '" + this.expirationDate + "'";
     }

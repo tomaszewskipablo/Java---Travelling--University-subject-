@@ -3,14 +3,17 @@ public class Vehicle {
     private double volume;
     private double averageSpeed;
 
-    public Vehicle(String registrationNumber, double volume, double averageSpeed) {
+    public Vehicle(String registrationNumber, double averageSpeed) {
         this.registrationNumber = registrationNumber;
-        this.volume = volume;
         this.averageSpeed = averageSpeed;
     }
 
-    public double calculateTravelTime(Route route)
-    {
+    public Vehicle(String registrationNumber, double volume, double averageSpeed) {
+        this(registrationNumber,averageSpeed):
+        this.volume = volume;
+    }
+
+    public double calculateTravelTime(Route route) {
         double travelHours = route.getDistance()/this.averageSpeed;
         //return travelHours;
           return      Math.ceil(travelHours/24);
