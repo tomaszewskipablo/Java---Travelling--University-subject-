@@ -94,4 +94,7 @@ public class Warehouse {
             System.out.println(i+1 +"." + foodItems[i].getLabel());
         }
     }
+    public String toString() {
+        return "Name: '" + this.name + "', Location: '" + this.getLocation().toString() + "Capacity: '" + this.capacity + "'";
+    }
 }

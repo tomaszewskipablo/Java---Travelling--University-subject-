@@ -23,5 +23,8 @@ public class Location {
         Country = country;
     }
 
+    public String toString() {
+        return "City: '" + this.City + "', Country: '" + this.Country+"'";
+    }
 
 }

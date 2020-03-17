@@ -21,4 +21,7 @@ public class FoodItem {
     public FoodItem() {
     }
 
+    public String toString() {
+        return "Label: '" + this.label + "', Volume: '" + this.volume + ", Weight: '" + this.weight + ", ExpirationDate: '" + this.expirationDate + "'";
+    }
 }

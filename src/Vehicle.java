@@ -40,4 +40,8 @@ public class Vehicle {
     public void setAverageSpeed(double averageSpeed) {
         this.averageSpeed = averageSpeed;
     }
+
+    public String toString() {
+        return "registrationNumber: '" + this.registrationNumber + "', volume: '" + this.volume + "averageSpeed: '" + this.averageSpeed + "'";
+    }
 }

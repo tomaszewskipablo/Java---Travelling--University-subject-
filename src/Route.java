@@ -32,4 +32,8 @@ public class Route {
     public void setDistance(double distance) {
         this.distance = distance;
     }
+
+    public String toString() {
+        return "Store: '" + this.store.toString() + "', Warehouse: '" + this.warehouse.toString() + ", Distance: '" + this.distance + "'";
+    }
 }

@@ -3,11 +3,14 @@ public class Launcher {
 
 
         Location wareHouse = new Location("Maribor","Slovenia");
+        System.out.println(wareHouse.toString());
         Warehouse AuchanWarehouse = new Warehouse("AuchanWarehouse", wareHouse, 1000);
 
 
 
         FoodItem onion = new FoodItem("onion");
+        System.out.println(onion.toString());
+
         FoodItem carot = new FoodItem("carot");
         FoodItem cheese = new FoodItem("cheese");
         FoodItem bread = new FoodItem("bread");
@@ -20,6 +23,9 @@ public class Launcher {
         AuchanWarehouse.removeItem(onion);
         AuchanWarehouse.removeItem(carot);
         AuchanWarehouse.showItems();
+
+        System.out.println(AuchanWarehouse.toString());
+
 
     }
 }

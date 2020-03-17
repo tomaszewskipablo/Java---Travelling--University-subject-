@@ -23,5 +23,7 @@ public class Store {
         this.location = location;
     }
 
-
+    public String toString() {
+        return "name: '" + this.name + "', location: '" + this.getLocation().toString() + "'";
+    }
 }
