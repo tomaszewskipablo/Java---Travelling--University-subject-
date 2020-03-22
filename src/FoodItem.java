@@ -1,3 +1,11 @@
+/**
+ * Represenation of foodItem
+ *
+ * @author  Pawel Tomaszewski
+ * @since   2020-03-20
+ */
+
+
 import java.util.Date;
 
 public class FoodItem {
@@ -6,21 +14,30 @@ public class FoodItem {
     private double weight;
     private Date expirationDate;
 
-    public void setLabel(String label) {
-        this.label = label;
+
+    // Constructors
+
+    /**
+     * Create Warehouse with empty fields
+     */
+    public FoodItem() {
     }
 
-    public String getLabel() {
-        return label;
-    }
-
+    /**
+     * Create FoodItem with label
+     * @param label label of foodItem
+     */
     public FoodItem(String label) {
         this.label = label;
     }
 
-    public FoodItem() {
-    }
-
+    /**
+     * Create FoodItem with label,volume, weight and expirationDate
+     * @param label label of foodItem
+     *@param volume volume of foodItem
+     *@param weight weight of foodItem
+     *@param expirationDate expirationDate of foodItem
+     */
     public FoodItem(String label, double volume, double weight, Date expirationDate) {
         this(label);
         this.volume = volume;
@@ -28,6 +45,28 @@ public class FoodItem {
         this.expirationDate = expirationDate;
     }
 
+    // Getters/Setters
+
+    /**
+     * set label of foodItem
+     * @param label label of foodItem
+     */
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    /**
+     * get name of warehouse
+     * @return name of warehouse
+     */
+    public String getLabel() {
+        return label;
+    }
+
+    /**
+     * Return information about object in String
+     * @return information as String about object (with all the fields)
+     */
     public String toString() {
         return "Label: '" + this.label + "', Volume: '" + this.volume + ", Weight: '" + this.weight + ", ExpirationDate: '" + this.expirationDate + "'";
     }
