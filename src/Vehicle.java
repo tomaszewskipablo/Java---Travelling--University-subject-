@@ -1,5 +1,5 @@
 /**
- * Represenation of vehicle
+ * Representation of vehicle
  *
  * @author  Pawel Tomaszewski
  * @since   2020-03-30
@@ -11,6 +11,12 @@ public class Vehicle {
     private double averageSpeed;
 
     // Constructors
+    /**
+     * Create Vehicle with empty fields
+     */
+    public Vehicle() {
+    }
+
     /**
      * Create Vehicle with registrationNumber and averageSpeed
      * @param registrationNumber registrationNumber of Vehicle
@@ -31,6 +37,8 @@ public class Vehicle {
         this(registrationNumber,averageSpeed);
         this.volume = volume;
     }
+
+
 
     // Getters/Setters
     /**
@@ -98,7 +106,12 @@ public class Vehicle {
      * Return information about object in String
      * @return information as String about object (with all the fields)
      */
+    @Override
     public String toString() {
-        return "registrationNumber: '" + this.registrationNumber + "', volume: '" + this.volume + "averageSpeed: '" + this.averageSpeed + "'";
+        return "Vehicle{" +
+                "registrationNumber='" + registrationNumber + '\'' +
+                ", volume=" + volume +
+                ", averageSpeed=" + averageSpeed +
+                '}';
     }
 }

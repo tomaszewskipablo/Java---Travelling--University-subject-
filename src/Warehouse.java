@@ -1,7 +1,7 @@
-
+import java.util.Arrays;
 
 /**
- * Represenation of warehouse
+ * Representation of warehouse
  *
  * @author  Pawel Tomaszewski
  * @since   2020-03-30
@@ -15,7 +15,6 @@ public class Warehouse {
     private int FoodItemSize=0;
 
     // Constructors
-
     /**
      * Create Warehouse with empty fields
      */
@@ -171,9 +170,17 @@ public class Warehouse {
 
     /**
      * Return information about object in String
+     *
      * @return information as String about object (with all the fields)
      */
+    @Override
     public String toString() {
-        return "Name: '" + this.name + "', Location: '" + this.getLocation().toString() + "Capacity: '" + this.capacity + "'";
+        return "Warehouse{" +
+                "name='" + name + '\'' +
+                ", location=" + location +
+                ", capacity=" + capacity +
+                ", foodItems=" + Arrays.toString(foodItems) +
+                ", FoodItemSize=" + FoodItemSize +
+                '}';
     }
 }

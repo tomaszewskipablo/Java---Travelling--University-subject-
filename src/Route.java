@@ -1,5 +1,5 @@
 /**
- * Represenation of route
+ * Representation of route
  *
  * @author  Pawel Tomaszewski
  * @since   2020-03-20
@@ -11,6 +11,11 @@ public class Route {
     private double distance;
 
     // Constructors
+    /**
+     * Create FoodItem with empty fields
+     */
+    public Route() {
+    }
 
     /**
      * Create Warehouse with name and location
@@ -76,7 +81,12 @@ public class Route {
      * Return information about object in String
      * @return information as String about object (with all the fields)
      */
+    @Override
     public String toString() {
-        return "Store: '" + this.store.toString() + "', Warehouse: '" + this.warehouse.toString() + ", Distance: '" + this.distance + "'";
+        return "Route{" +
+                "store=" + store +
+                ", warehouse=" + warehouse +
+                ", distance=" + distance +
+                '}';
     }
 }

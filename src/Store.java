@@ -1,5 +1,5 @@
 /**
- * Represenation of store
+ * Representation of store
  *
  * @author  Pawel Tomaszewski
  * @since   2020-03-20
@@ -13,6 +13,11 @@ public class Store {
     // Constructors
 
     /**
+     * Create Store with empty fields
+     */
+    public Store() {
+    }
+    /**
      * Create Store with name and location
      * @param name name of warehouse
      * @param location location of warehouse
@@ -23,6 +28,8 @@ public class Store {
     }
 
     // Getters/Setters
+
+
 
     /**
      * get name of store
@@ -60,7 +67,11 @@ public class Store {
      * Return information about object in String
      * @return information as String about object (with all the fields)
      */
+    @Override
     public String toString() {
-        return "name: '" + this.name + "', location: '" + this.getLocation().toString() + "'";
+        return "Store{" +
+                "name='" + name + '\'' +
+                ", location=" + location +
+                '}';
     }
 }

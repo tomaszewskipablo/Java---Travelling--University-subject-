@@ -1,24 +1,31 @@
 /**
- * Represenation of location
+ * Representation of location
  *
  * @author  Pawel Tomaszewski
  * @since   2020-03-20
  */
 
 public class Location {
-    private String City;
-    private String Country;
+    private String city;
+    private String country;
 
     // Constructors
     /**
-     * Create Location with city and country
-     * @param City city of Location
-     * @param Country Country of Location
+     * Create Location with empty fields
      */
-    Location(String City, String Country){
-        this.City = City;
-        this.Country = Country;
+    public Location() {
     }
+
+    /**
+     * Create Location with city and country
+     * @param city city of Location
+     * @param country Country of Location
+     */
+    Location(String city, String country){
+        this.city = city;
+        this.country = country;
+    }
+
 
     // Getters/Setters
     /**
@@ -26,7 +33,7 @@ public class Location {
      * @return city of Location
      */
     public String getCity() {
-        return City;
+        return city;
     }
 
     /**
@@ -34,15 +41,15 @@ public class Location {
      * @param city city of Location
      */
     public void setCity(String city) {
-        City = city;
+        city = city;
     }
 
     /**
      * get country of Location
-     * @return Country country of Location
+     * @return country country of Location
      */
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     /**
@@ -50,7 +57,7 @@ public class Location {
      * @param country country of Location
      */
     public void setCountry(String country) {
-        Country = country;
+        country = country;
     }
 
     // Methods
@@ -58,7 +65,11 @@ public class Location {
      * Return information about object in String
      * @return information as String about object (with all the fields)
      */
+    @Override
     public String toString() {
-        return "City: '" + this.City + "', Country: '" + this.Country+"'";
+        return "Location{" +
+                "city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                '}';
     }
 }

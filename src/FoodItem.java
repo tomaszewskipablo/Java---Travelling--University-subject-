@@ -1,24 +1,23 @@
 /**
- * Represenation of foodItem
+ * Representation of foodItem
  *
  * @author  Pawel Tomaszewski
  * @since   2020-03-20
  */
 
 
-import java.util.Date;
 
 public class FoodItem {
     private String label;
     private double volume;
     private double weight;
-    private Date expirationDate;
+    private java.time.LocalDate expirationDate;
 
 
     // Constructors
 
     /**
-     * Create Warehouse with empty fields
+     * Create FoodItem with empty fields
      */
     public FoodItem() {
     }
@@ -38,7 +37,7 @@ public class FoodItem {
      *@param weight weight of foodItem
      *@param expirationDate expirationDate of foodItem
      */
-    public FoodItem(String label, double volume, double weight, Date expirationDate) {
+    public FoodItem(String label, double volume, double weight, java.time.LocalDate expirationDate) {
         this(label);
         this.volume = volume;
         this.weight = weight;
@@ -67,7 +66,13 @@ public class FoodItem {
      * Return information about object in String
      * @return information as String about object (with all the fields)
      */
+    @Override
     public String toString() {
-        return "Label: '" + this.label + "', Volume: '" + this.volume + ", Weight: '" + this.weight + ", ExpirationDate: '" + this.expirationDate + "'";
+        return "FoodItem{" +
+                "label='" + label + '\'' +
+                ", volume=" + volume +
+                ", weight=" + weight +
+                ", expirationDate=" + expirationDate +
+                '}';
     }
 }
