@@ -1,4 +1,4 @@
-package si.um.opj.Tomaszewski.facility;
+package si.um.opj.Tomaszewski.logic.facility;
 
 import si.um.opj.Tomaszewski.logic.Location;
 
@@ -17,12 +17,12 @@ public class Store {
     // Constructors
 
     /**
-     * Create si.um.opj.Tomaszewski.facility.Store with empty fields
+     * Create si.um.opj.Tomaszewski.logic.facility.Store with empty fields
      */
     public Store() {
     }
     /**
-     * Create si.um.opj.Tomaszewski.facility.Store with name and location
+     * Create si.um.opj.Tomaszewski.logic.facility.Store with name and location
      * @param name name of warehouse
      * @param location location of warehouse
      */
@@ -73,7 +73,7 @@ public class Store {
      */
     @Override
     public String toString() {
-        return "si.um.opj.Tomaszewski.facility.Store{" +
+        return "si.um.opj.Tomaszewski.logic.facility.Store{" +
                 "name='" + name + '\'' +
                 ", location=" + location +
                 '}';

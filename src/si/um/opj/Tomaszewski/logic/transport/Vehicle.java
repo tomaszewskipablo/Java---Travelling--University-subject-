@@ -1,4 +1,4 @@
-package si.um.opj.Tomaszewski.transport;
+package si.um.opj.Tomaszewski.logic.transport;
 
 import si.um.opj.Tomaszewski.logic.FoodItem;
 import si.um.opj.Tomaszewski.logic.Route;
@@ -23,15 +23,15 @@ abstract public class Vehicle {
 
     // Constructors
     /**
-     * Create si.um.opj.Tomaszewski.transport.Vehicle with empty fields
+     * Create si.um.opj.Tomaszewski.logic.transport.Vehicle with empty fields
      */
     public Vehicle() {
     }
 
     /**
-     * Create si.um.opj.Tomaszewski.transport.Vehicle with registrationNumber and averageSpeed
-     * @param registrationNumber registrationNumber of si.um.opj.Tomaszewski.transport.Vehicle
-     * @param averageSpeed averageSpeed of si.um.opj.Tomaszewski.transport.Vehicle
+     * Create si.um.opj.Tomaszewski.logic.transport.Vehicle with registrationNumber and averageSpeed
+     * @param registrationNumber registrationNumber of si.um.opj.Tomaszewski.logic.transport.Vehicle
+     * @param averageSpeed averageSpeed of si.um.opj.Tomaszewski.logic.transport.Vehicle
      */
     public Vehicle(String registrationNumber, double averageSpeed) {
         this.registrationNumber = registrationNumber;
@@ -39,10 +39,10 @@ abstract public class Vehicle {
     }
 
     /**
-     * Create si.um.opj.Tomaszewski.transport.Vehicle with registrationNumber, volume and averageSpeed
-     * @param registrationNumber registrationNumber of si.um.opj.Tomaszewski.transport.Vehicle
-     * @param volume volume of si.um.opj.Tomaszewski.transport.Vehicle
-     * @param averageSpeed averageSpeed of si.um.opj.Tomaszewski.transport.Vehicle
+     * Create si.um.opj.Tomaszewski.logic.transport.Vehicle with registrationNumber, volume and averageSpeed
+     * @param registrationNumber registrationNumber of si.um.opj.Tomaszewski.logic.transport.Vehicle
+     * @param volume volume of si.um.opj.Tomaszewski.logic.transport.Vehicle
+     * @param averageSpeed averageSpeed of si.um.opj.Tomaszewski.logic.transport.Vehicle
      */
     public Vehicle(String registrationNumber, double volume, double averageSpeed) {
         this(registrationNumber,averageSpeed);
@@ -144,7 +144,7 @@ abstract public class Vehicle {
      */
     @Override
     public String toString() {
-        return "si.um.opj.Tomaszewski.transport.Vehicle{" +
+        return "si.um.opj.Tomaszewski.logic.transport.Vehicle{" +
                 "registrationNumber='" + registrationNumber + '\'' +
                 ", volume=" + volume +
                 ", averageSpeed=" + averageSpeed +

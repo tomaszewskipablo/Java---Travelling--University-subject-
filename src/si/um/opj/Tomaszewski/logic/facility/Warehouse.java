@@ -1,4 +1,4 @@
-package si.um.opj.Tomaszewski.facility;
+package si.um.opj.Tomaszewski.logic.facility;
 
 import si.um.opj.Tomaszewski.logic.FoodItem;
 import si.um.opj.Tomaszewski.logic.Location;
@@ -21,13 +21,13 @@ public class Warehouse {
 
     // Constructors
     /**
-     * Create si.um.opj.Tomaszewski.facility.Warehouse with empty fields
+     * Create si.um.opj.Tomaszewski.logic.facility.Warehouse with empty fields
      */
     private Warehouse() {
     }
 
     /**
-     * Create si.um.opj.Tomaszewski.facility.Warehouse with name and location
+     * Create si.um.opj.Tomaszewski.logic.facility.Warehouse with name and location
      * @param name name of warehouse
      * @param location location of warehouse
      */
@@ -38,7 +38,7 @@ public class Warehouse {
 
     // Constructors
     /**
-     * Create si.um.opj.Tomaszewski.facility.Warehouse with name, location and capacity
+     * Create si.um.opj.Tomaszewski.logic.facility.Warehouse with name, location and capacity
      * @param name name of warehouse
      * @param location location of warehouse
      * @param capacity max size of foodItems array
@@ -178,7 +178,7 @@ public class Warehouse {
      */
     @Override
     public String toString() {
-        return "si.um.opj.Tomaszewski.facility.Warehouse{" +
+        return "si.um.opj.Tomaszewski.logic.facility.Warehouse{" +
                 "name='" + name + '\'' +
                 ", location=" + location +
                 ", capacity=" + capacity +

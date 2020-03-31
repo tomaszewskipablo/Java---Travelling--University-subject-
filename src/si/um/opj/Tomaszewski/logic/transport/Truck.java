@@ -1,4 +1,4 @@
-package si.um.opj.Tomaszewski.transport;
+package si.um.opj.Tomaszewski.logic.transport;
 
 public class Truck extends Vehicle {
 

@@ -1,9 +1,7 @@
-package si.um.opj.Tomaszewski.transport;
+package si.um.opj.Tomaszewski.logic.transport;
 
-enum FoodItemType {
-    FROZEN,
-    FRESH,
-}
+
+import si.um.opj.Tomaszewski.logic.FoodItemType;
 
 public class Van extends Vehicle {
 
