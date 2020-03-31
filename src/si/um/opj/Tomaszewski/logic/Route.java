@@ -1,3 +1,8 @@
+package si.um.opj.Tomaszewski.logic;
+
+import si.um.opj.Tomaszewski.facility.Store;
+import si.um.opj.Tomaszewski.facility.Warehouse;
+
 /**
  * Representation of route
  *
@@ -12,16 +17,16 @@ public class Route {
 
     // Constructors
     /**
-     * Create FoodItem with empty fields
+     * Create si.um.opj.Tomaszewski.logic.FoodItem with empty fields
      */
     public Route() {
     }
 
     /**
-     * Create Warehouse with name and location
-     * @param store Store on route
-     * @param warehouse  Warehouse on route
-     * @param distance distance between store and Warehouse
+     * Create si.um.opj.Tomaszewski.facility.Warehouse with name and location
+     * @param store si.um.opj.Tomaszewski.facility.Store on route
+     * @param warehouse  si.um.opj.Tomaszewski.facility.Warehouse on route
+     * @param distance distance between store and si.um.opj.Tomaszewski.facility.Warehouse
      */
     public Route(Store store, Warehouse warehouse, double distance) {
         this.store = store;
@@ -83,7 +88,7 @@ public class Route {
      */
     @Override
     public String toString() {
-        return "Route{" +
+        return "si.um.opj.Tomaszewski.logic.Route{" +
                 "store=" + store +
                 ", warehouse=" + warehouse +
                 ", distance=" + distance +

@@ -1,3 +1,7 @@
+package si.um.opj.Tomaszewski.facility;
+
+import si.um.opj.Tomaszewski.logic.Location;
+
 /**
  * Representation of store
  *
@@ -13,12 +17,12 @@ public class Store {
     // Constructors
 
     /**
-     * Create Store with empty fields
+     * Create si.um.opj.Tomaszewski.facility.Store with empty fields
      */
     public Store() {
     }
     /**
-     * Create Store with name and location
+     * Create si.um.opj.Tomaszewski.facility.Store with name and location
      * @param name name of warehouse
      * @param location location of warehouse
      */
@@ -69,7 +73,7 @@ public class Store {
      */
     @Override
     public String toString() {
-        return "Store{" +
+        return "si.um.opj.Tomaszewski.facility.Store{" +
                 "name='" + name + '\'' +
                 ", location=" + location +
                 '}';

@@ -1,3 +1,7 @@
+package si.um.opj.Tomaszewski.logic;
+
+import java.time.LocalDate;
+
 /**
  * Representation of foodItem
  *
@@ -17,13 +21,13 @@ public class FoodItem {
     // Constructors
 
     /**
-     * Create FoodItem with empty fields
+     * Create si.um.opj.Tomaszewski.logic.FoodItem with empty fields
      */
     public FoodItem() {
     }
 
     /**
-     * Create FoodItem with label
+     * Create si.um.opj.Tomaszewski.logic.FoodItem with label
      * @param label label of foodItem
      */
     public FoodItem(String label) {
@@ -31,7 +35,7 @@ public class FoodItem {
     }
 
     /**
-     * Create FoodItem with label,volume, weight and expirationDate
+     * Create si.um.opj.Tomaszewski.logic.FoodItem with label,volume, weight and expirationDate
      * @param label label of foodItem
      *@param volume volume of foodItem
      *@param weight weight of foodItem
@@ -54,6 +58,10 @@ public class FoodItem {
         this.label = label;
     }
 
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
     /**
      * get name of warehouse
      * @return name of warehouse
@@ -66,9 +74,10 @@ public class FoodItem {
      * Return information about object in String
      * @return information as String about object (with all the fields)
      */
+
     @Override
     public String toString() {
-        return "FoodItem{" +
+        return "si.um.opj.Tomaszewski.logic.FoodItem{" +
                 "label='" + label + '\'' +
                 ", volume=" + volume +
                 ", weight=" + weight +

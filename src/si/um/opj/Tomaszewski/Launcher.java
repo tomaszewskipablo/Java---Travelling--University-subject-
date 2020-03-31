@@ -1,4 +1,8 @@
-import java.time.LocalDate;
+package si.um.opj.Tomaszewski;
+
+import si.um.opj.Tomaszewski.facility.*;
+import si.um.opj.Tomaszewski.logic.*;
+import si.um.opj.Tomaszewski.transport.*;
 
 /**
  * Main class for launching a program
@@ -28,11 +32,13 @@ public class Launcher {
         FoodItem bread = new FoodItem("bread", 5,4,	 java.time.LocalDate.now().plusMonths(1));
         System.out.println(bread.toString());
 
+        FoodItem orange = new FoodItem("orange",2,10,	 java.time.LocalDate.now());
         // ADD items
         auchanWarehouse.addItem(onion);
         auchanWarehouse.addItem(cheese);
         auchanWarehouse.addItem(bread);
         auchanWarehouse.addItem(carrot);
+        auchanWarehouse.addItem(orange);
 
         System.out.println(auchanWarehouse.toString());
 
@@ -49,7 +55,13 @@ public class Launcher {
 
         System.out.println("Number of Items: " + auchanWarehouse.returnTheNumberOfFoodItems());
 
-    Vehicle audi = new Vehicle("SW182", 1400,90);
+    Vehicle audi = new Van("SW182", 1400,90);
+    audi.loadFoodItem(onion);
+    audi.loadFoodItem(carrot);
+
+
+        System.out.println(audi.getTakenSpace());
+
     System.out.println(audi.toString());
 
     Store bigBang = new Store("bigBang", maribor);

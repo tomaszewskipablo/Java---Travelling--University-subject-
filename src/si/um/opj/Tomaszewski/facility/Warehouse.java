@@ -1,3 +1,8 @@
+package si.um.opj.Tomaszewski.facility;
+
+import si.um.opj.Tomaszewski.logic.FoodItem;
+import si.um.opj.Tomaszewski.logic.Location;
+
 import java.util.Arrays;
 
 /**
@@ -10,19 +15,19 @@ import java.util.Arrays;
 public class Warehouse {
     private String name;
     private Location location;
-    private double capacity=2;
+    private double capacity;
     private FoodItem[] foodItems;
-    private int FoodItemSize=0;
+    private int foodItemSize=0;
 
     // Constructors
     /**
-     * Create Warehouse with empty fields
+     * Create si.um.opj.Tomaszewski.facility.Warehouse with empty fields
      */
     private Warehouse() {
     }
 
     /**
-     * Create Warehouse with name and location
+     * Create si.um.opj.Tomaszewski.facility.Warehouse with name and location
      * @param name name of warehouse
      * @param location location of warehouse
      */
@@ -33,7 +38,7 @@ public class Warehouse {
 
     // Constructors
     /**
-     * Create Warehouse with name, location and capacity
+     * Create si.um.opj.Tomaszewski.facility.Warehouse with name, location and capacity
      * @param name name of warehouse
      * @param location location of warehouse
      * @param capacity max size of foodItems array
@@ -84,16 +89,16 @@ public class Warehouse {
      * @since 2020-03-20
      */
     public void addItem(FoodItem foodItem) {
-        if(FoodItemSize<capacity) {
+        if(foodItemSize<capacity&& stillValid(foodItem)) {
             FoodItem[] temp = foodItems;
-            foodItems = new FoodItem[FoodItemSize + 1];
+            foodItems = new FoodItem[foodItemSize + 1];
 
-            for (int i = 0; i < FoodItemSize; i++) {
+            for (int i = 0; i < foodItemSize; i++) {
                 foodItems[i] = temp[i];
             }
 
-            foodItems[FoodItemSize] = foodItem;
-            FoodItemSize++;
+            foodItems[foodItemSize] = foodItem;
+            foodItemSize++;
         }
     }
     /**
@@ -105,11 +110,11 @@ public class Warehouse {
         int indexToRemove = indexOfFoodToRemove(foodItem);
         if(indexToRemove>=0){
             FoodItem[] temp = foodItems;
-            FoodItemSize--;
-            foodItems = new FoodItem[FoodItemSize];
+            foodItemSize--;
+            foodItems = new FoodItem[foodItemSize];
 
             int j = 0;
-            for(int i=0;i<FoodItemSize;i++){
+            for(int i=0;i<foodItemSize;i++){
                     if(j==indexToRemove) {
                         j++;
                     }
@@ -126,7 +131,7 @@ public class Warehouse {
      * @since 2020-03-20
      */
     private int indexOfFoodToRemove(FoodItem foodItem){
-        for(int i=0;i<FoodItemSize;i++) {
+        for(int i=0;i<foodItemSize;i++) {
             if(foodItems[i].getLabel() == foodItem.getLabel()){
                 return i;
             }
@@ -140,7 +145,7 @@ public class Warehouse {
      * @since 2020-03-20
      */
     public int returnTheNumberOfFoodItems(){
-        return FoodItemSize;
+        return foodItemSize;
     }
 
 
@@ -151,7 +156,7 @@ public class Warehouse {
      * @since 2020-03-20
      */
    public boolean foodItemExists(String label) {
-       for(int i=0;i<FoodItemSize;i++) {
+       for(int i=0;i<foodItemSize;i++) {
            if(foodItems[i].getLabel() == label){
                return true;
            }
@@ -159,14 +164,12 @@ public class Warehouse {
        return false;
    }
 
-    /**
-     * Display foodItem array
-     */
-    public void showItems(){
-        for(int i=0;i<FoodItemSize;i++) {
-            System.out.println(i+1 +"." + foodItems[i].getLabel());
-        }
-    }
+   private Boolean stillValid(FoodItem foodItem){
+      if(foodItem.getExpirationDate().compareTo(java.time.LocalDate.now().plusDays(3)) > 0) {
+          return true;
+      }
+      return false;
+   }
 
     /**
      * Return information about object in String
@@ -175,12 +178,12 @@ public class Warehouse {
      */
     @Override
     public String toString() {
-        return "Warehouse{" +
+        return "si.um.opj.Tomaszewski.facility.Warehouse{" +
                 "name='" + name + '\'' +
                 ", location=" + location +
                 ", capacity=" + capacity +
                 ", foodItems=" + Arrays.toString(foodItems) +
-                ", FoodItemSize=" + FoodItemSize +
+                ", foodItemSize=" + foodItemSize +
                 '}';
     }
 }

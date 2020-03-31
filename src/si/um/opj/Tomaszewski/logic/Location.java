@@ -1,3 +1,5 @@
+package si.um.opj.Tomaszewski.logic;
+
 /**
  * Representation of location
  *
@@ -11,17 +13,17 @@ public class Location {
 
     // Constructors
     /**
-     * Create Location with empty fields
+     * Create si.um.opj.Tomaszewski.logic.Location with empty fields
      */
     public Location() {
     }
 
     /**
-     * Create Location with city and country
-     * @param city city of Location
-     * @param country Country of Location
+     * Create si.um.opj.Tomaszewski.logic.Location with city and country
+     * @param city city of si.um.opj.Tomaszewski.logic.Location
+     * @param country Country of si.um.opj.Tomaszewski.logic.Location
      */
-    Location(String city, String country){
+    public Location(String city, String country){
         this.city = city;
         this.country = country;
     }
@@ -29,32 +31,32 @@ public class Location {
 
     // Getters/Setters
     /**
-     * get city of Location
-     * @return city of Location
+     * get city of si.um.opj.Tomaszewski.logic.Location
+     * @return city of si.um.opj.Tomaszewski.logic.Location
      */
     public String getCity() {
         return city;
     }
 
     /**
-     * set city Location
-     * @param city city of Location
+     * set city si.um.opj.Tomaszewski.logic.Location
+     * @param city city of si.um.opj.Tomaszewski.logic.Location
      */
     public void setCity(String city) {
         city = city;
     }
 
     /**
-     * get country of Location
-     * @return country country of Location
+     * get country of si.um.opj.Tomaszewski.logic.Location
+     * @return country country of si.um.opj.Tomaszewski.logic.Location
      */
     public String getCountry() {
         return country;
     }
 
     /**
-     * set country of Location
-     * @param country country of Location
+     * set country of si.um.opj.Tomaszewski.logic.Location
+     * @param country country of si.um.opj.Tomaszewski.logic.Location
      */
     public void setCountry(String country) {
         country = country;
@@ -67,7 +69,7 @@ public class Location {
      */
     @Override
     public String toString() {
-        return "Location{" +
+        return "si.um.opj.Tomaszewski.logic.Location{" +
                 "city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 '}';
