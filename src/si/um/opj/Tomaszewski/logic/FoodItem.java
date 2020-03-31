@@ -2,6 +2,11 @@ package si.um.opj.Tomaszewski.logic;
 
 import java.time.LocalDate;
 
+enum FoodItemType {
+    FROZEN,
+    FRESH,
+}
+
 /**
  * Representation of foodItem
  *
@@ -16,6 +21,7 @@ public class FoodItem {
     private double volume;
     private double weight;
     private java.time.LocalDate expirationDate;
+    private FoodItemType foodItemType;
 
 
     // Constructors
@@ -47,6 +53,12 @@ public class FoodItem {
         this.weight = weight;
         this.expirationDate = expirationDate;
     }
+
+    public FoodItem(String label, double volume, double weight, java.time.LocalDate expirationDate, FoodItemType foodItemType) {
+        this(label, volume, weight, expirationDate);
+        this.foodItemType = foodItemType;
+    }
+
 
     // Getters/Setters
 
