@@ -144,13 +144,13 @@ abstract public class Vehicle {
      */
     @Override
     public String toString() {
-        return "si.um.opj.Tomaszewski.logic.transport.Vehicle{" +
+        return "Vehicle{" +
                 "registrationNumber='" + registrationNumber + '\'' +
                 ", volume=" + volume +
                 ", averageSpeed=" + averageSpeed +
-                ", foodItems=" + Arrays.toString(cargo) +
+                ", cargo=" + Arrays.toString(cargo) +
                 ", length=" + length +
-                ", FoodItemSize=" + foodItemSize +
+                ", foodItemSize=" + foodItemSize +
                 '}';
     }
 }

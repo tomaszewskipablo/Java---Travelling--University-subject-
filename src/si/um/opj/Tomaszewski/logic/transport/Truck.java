@@ -32,4 +32,12 @@ public class Truck extends Vehicle {
     double getVehicleMaxVolume() {
         return length * numberOFTrailers;
     }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                super.toString() +
+                "numberOFTrailers=" + numberOFTrailers +
+                '}';
+    }
 }

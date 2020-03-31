@@ -20,6 +20,12 @@ public class Warehouse extends BusinessFacilitiy{
 
     // Constructors
 
+
+    public Warehouse(String name, Location location, double capacity) {
+        super(name, location);
+        this.capacity = capacity;
+    }
+
     public Warehouse(String name, Location location, double capacity, FoodItem[] foodItems, int foodItemSize) {
         super(name, location);
         this.capacity = capacity;
@@ -158,12 +164,11 @@ public class Warehouse extends BusinessFacilitiy{
      */
     @Override
     public String toString() {
-        return "si.um.opj.Tomaszewski.logic.facility.Warehouse{" +
-                "name='" + name + '\'' +
-                ", location=" + location +
-                ", capacity=" + capacity +
+        return "Warehouse{" +
+                "capacity=" + capacity +
                 ", foodItems=" + Arrays.toString(foodItems) +
                 ", foodItemSize=" + foodItemSize +
+                super.toString() +
                 '}';
     }
 }

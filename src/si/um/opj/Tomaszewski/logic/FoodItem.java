@@ -85,11 +85,12 @@ public class FoodItem {
 
     @Override
     public String toString() {
-        return "si.um.opj.Tomaszewski.logic.FoodItem{" +
+        return "FoodItem{" +
                 "label='" + label + '\'' +
                 ", volume=" + volume +
                 ", weight=" + weight +
                 ", expirationDate=" + expirationDate +
+                ", foodItemType=" + foodItemType +
                 '}';
     }
 }

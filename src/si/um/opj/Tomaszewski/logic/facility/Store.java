@@ -61,13 +61,13 @@ public class Store extends BusinessFacilitiy {
 
     /**
      * Return information about object in String
+     *
      * @return information as String about object (with all the fields)
      */
     @Override
     public String toString() {
-        return "si.um.opj.Tomaszewski.logic.facility.Store{" +
-                "name='" + name + '\'' +
-                ", location=" + location +
+        return "Store{" +
+                super.toString() +
                 '}';
     }
 }

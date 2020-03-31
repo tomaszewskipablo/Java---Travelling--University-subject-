@@ -88,7 +88,7 @@ public class Route {
      */
     @Override
     public String toString() {
-        return "si.um.opj.Tomaszewski.logic.Route{" +
+        return "Route{" +
                 "store=" + store +
                 ", warehouse=" + warehouse +
                 ", distance=" + distance +

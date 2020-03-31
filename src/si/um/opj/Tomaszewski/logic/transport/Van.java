@@ -3,6 +3,8 @@ package si.um.opj.Tomaszewski.logic.transport;
 
 import si.um.opj.Tomaszewski.logic.FoodItemType;
 
+import java.util.Arrays;
+
 public class Van extends Vehicle {
 
     private FoodItemType foodItemType;
@@ -39,5 +41,13 @@ public class Van extends Vehicle {
     @Override
     double getVehicleMaxVolume() {
         return length;
+    }
+
+    @Override
+    public String toString() {
+        return "Van{" +
+                super.toString() +
+                "foodItemType=" + foodItemType +
+                '}';
     }
 }

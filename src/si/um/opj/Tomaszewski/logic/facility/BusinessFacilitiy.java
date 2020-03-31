@@ -12,4 +12,12 @@ abstract public class BusinessFacilitiy {
         this.name = name;
         this.location = location;
     }
+
+    @Override
+    public String toString() {
+        return "BusinessFacilitiy{" +
+                "name='" + name + '\'' +
+                ", location=" + location +
+                '}';
+    }
 }
