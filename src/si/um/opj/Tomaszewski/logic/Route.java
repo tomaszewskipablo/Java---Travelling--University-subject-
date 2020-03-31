@@ -1,7 +1,7 @@
 package si.um.opj.Tomaszewski.logic;
 
-import si.um.opj.Tomaszewski.facility.Store;
-import si.um.opj.Tomaszewski.facility.Warehouse;
+import si.um.opj.Tomaszewski.logic.facility.Store;
+import si.um.opj.Tomaszewski.logic.facility.Warehouse;
 
 /**
  * Representation of route
@@ -23,10 +23,10 @@ public class Route {
     }
 
     /**
-     * Create si.um.opj.Tomaszewski.facility.Warehouse with name and location
-     * @param store si.um.opj.Tomaszewski.facility.Store on route
-     * @param warehouse  si.um.opj.Tomaszewski.facility.Warehouse on route
-     * @param distance distance between store and si.um.opj.Tomaszewski.facility.Warehouse
+     * Create si.um.opj.Tomaszewski.logic.facility.Warehouse with name and location
+     * @param store si.um.opj.Tomaszewski.logic.facility.Store on route
+     * @param warehouse  si.um.opj.Tomaszewski.logic.facility.Warehouse on route
+     * @param distance distance between store and si.um.opj.Tomaszewski.logic.facility.Warehouse
      */
     public Route(Store store, Warehouse warehouse, double distance) {
         this.store = store;

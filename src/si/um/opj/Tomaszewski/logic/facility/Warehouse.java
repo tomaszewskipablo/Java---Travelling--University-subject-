@@ -12,43 +12,23 @@ import java.util.Arrays;
  * @since   2020-03-30
  */
 
-public class Warehouse {
-    private String name;
-    private Location location;
+public class Warehouse extends BusinessFacilitiy{
+
     private double capacity;
     private FoodItem[] foodItems;
     private int foodItemSize=0;
 
     // Constructors
-    /**
-     * Create si.um.opj.Tomaszewski.logic.facility.Warehouse with empty fields
-     */
-    private Warehouse() {
-    }
 
-    /**
-     * Create si.um.opj.Tomaszewski.logic.facility.Warehouse with name and location
-     * @param name name of warehouse
-     * @param location location of warehouse
-     */
-    private Warehouse(String name, Location location) {
-        this.name = name;
-        this.location = location;
-    }
-
-    // Constructors
-    /**
-     * Create si.um.opj.Tomaszewski.logic.facility.Warehouse with name, location and capacity
-     * @param name name of warehouse
-     * @param location location of warehouse
-     * @param capacity max size of foodItems array
-     */
-    public Warehouse(String name, Location location, double capacity) {
-        this(name, location);
+    public Warehouse(String name, Location location, double capacity, FoodItem[] foodItems, int foodItemSize) {
+        super(name, location);
         this.capacity = capacity;
+        this.foodItems = foodItems;
+        this.foodItemSize = foodItemSize;
     }
 
-    // Getters/Setters
+
+// Getters/Setters
     /**
      * get name of warehouse
      * @return name of warehouse

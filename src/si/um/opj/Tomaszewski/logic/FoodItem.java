@@ -2,10 +2,6 @@ package si.um.opj.Tomaszewski.logic;
 
 import java.time.LocalDate;
 
-enum FoodItemType {
-    FROZEN,
-    FRESH,
-}
 
 /**
  * Representation of foodItem

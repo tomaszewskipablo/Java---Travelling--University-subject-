@@ -10,26 +10,18 @@ import si.um.opj.Tomaszewski.logic.Location;
  */
 
 
-public class Store {
-    private String name;
-    private Location location;
+public class Store extends BusinessFacilitiy {
+
 
     // Constructors
 
-    /**
-     * Create si.um.opj.Tomaszewski.logic.facility.Store with empty fields
-     */
     public Store() {
     }
-    /**
-     * Create si.um.opj.Tomaszewski.logic.facility.Store with name and location
-     * @param name name of warehouse
-     * @param location location of warehouse
-     */
+
     public Store(String name, Location location) {
-        this.name = name;
-        this.location = location;
+        super(name, location);
     }
+
 
     // Getters/Setters
 

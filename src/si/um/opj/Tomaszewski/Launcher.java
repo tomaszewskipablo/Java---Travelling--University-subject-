@@ -1,8 +1,8 @@
 package si.um.opj.Tomaszewski;
 
-import si.um.opj.Tomaszewski.facility.*;
+import si.um.opj.Tomaszewski.logic.facility.*;
 import si.um.opj.Tomaszewski.logic.*;
-import si.um.opj.Tomaszewski.transport.*;
+import si.um.opj.Tomaszewski.logic.transport.*;
 
 /**
  * Main class for launching a program
