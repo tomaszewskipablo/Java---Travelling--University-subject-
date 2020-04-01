@@ -13,8 +13,8 @@ public class Truck extends Vehicle {
         this.numberOFTrailers = numberOFTrailers;
     }
 
-    public Truck(String registrationNumber, double volume, double averageSpeed, int numberOFTrailers) {
-        super(registrationNumber, volume, averageSpeed);
+    public Truck(String registrationNumber, double volume, double averageSpeed, int numberOFTrailers, int length) {
+        super(registrationNumber, volume, averageSpeed, length);
         this.numberOFTrailers = numberOFTrailers;
     }
 
@@ -29,7 +29,7 @@ public class Truck extends Vehicle {
 
 
     @Override
-    double getVehicleMaxVolume() {
+    public double getVehicleMaxVolume() {
         return length * numberOFTrailers;
     }
 

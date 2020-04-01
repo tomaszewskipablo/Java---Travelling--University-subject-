@@ -44,9 +44,10 @@ abstract public class Vehicle {
      * @param volume volume of si.um.opj.Tomaszewski.logic.transport.Vehicle
      * @param averageSpeed averageSpeed of si.um.opj.Tomaszewski.logic.transport.Vehicle
      */
-    public Vehicle(String registrationNumber, double volume, double averageSpeed) {
+    public Vehicle(String registrationNumber, double volume, double averageSpeed, int length) {
         this(registrationNumber,averageSpeed);
         this.volume = volume;
+        this.length = length;
     }
 
 
@@ -136,7 +137,7 @@ abstract public class Vehicle {
         return (double)foodItemSize/length * 100;
     }
 
-    abstract double getVehicleMaxVolume();
+    abstract public double getVehicleMaxVolume();
 
     /**
      * Return information about object in String

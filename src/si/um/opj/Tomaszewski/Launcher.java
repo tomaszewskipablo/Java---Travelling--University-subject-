@@ -21,53 +21,48 @@ public class Launcher {
         Warehouse auchanWarehouse = new Warehouse("AuchanWarehouse", maribor, 1000);
         System.out.println(auchanWarehouse.toString());
 
-        FoodItem onion = new FoodItem("onion",12,10,java.time.LocalDate.now().plusMonths(3));
-        System.out.println(onion.toString());
-
+        // CREATE FOOD ITEMS
         FoodItem carrot = new FoodItem("carrot",12,0.4,	 java.time.LocalDate.now().plusMonths(1));
-        System.out.println(carrot.toString());
-
-        FoodItem cheese = new FoodItem("cheese",2,10,	 java.time.LocalDate.now().plusMonths(10));
-        System.out.println(cheese.toString());
-        FoodItem bread = new FoodItem("bread", 5,4,	 java.time.LocalDate.now().plusMonths(1));
-        System.out.println(bread.toString());
-
+        System.out.println(carrot);
         FoodItem orange = new FoodItem("orange",2,10,	 java.time.LocalDate.now());
+        System.out.println(orange);
+
         // ADD items
-        auchanWarehouse.addItem(onion);
-        auchanWarehouse.addItem(cheese);
-        auchanWarehouse.addItem(bread);
         auchanWarehouse.addItem(carrot);
         auchanWarehouse.addItem(orange);
 
-        System.out.println(auchanWarehouse.toString());
+        auchanWarehouse.toString();
 
+        // count
         System.out.println("Number of Items: " + auchanWarehouse.returnTheNumberOfFoodItems());
 
+        // VAN
+        Vehicle audi = new Van("SW182", 14,90, FoodItemType.FROZEN, 10);
+        audi.loadFoodItem(orange);
+        audi.loadFoodItem(carrot);
 
-        System.out.println("Remove items: ");
+        System.out.println(audi);
 
-        // REMOVE items
-        auchanWarehouse.removeItem(onion);
-        auchanWarehouse.removeItem(carrot);
+        System.out.println("Max audi max volume = " + audi.getVehicleMaxVolume());
+        System.out.println("Taken space = " + audi.getTakenSpace() + "%");
 
-        System.out.println(auchanWarehouse.toString());
+        // Unload
+        audi.unloadFoodItems();
+        System.out.println(audi);
+        // TRUCK
+        Vehicle scania = new Truck("N1632", 60,40,2,18);
+        scania.loadFoodItem(orange);
+        scania.loadFoodItem(carrot);
 
-        System.out.println("Number of Items: " + auchanWarehouse.returnTheNumberOfFoodItems());
+        System.out.println(scania);
 
-    Vehicle audi = new Van("SW182", 1400,90);
-    audi.loadFoodItem(onion);
-    audi.loadFoodItem(carrot);
+        System.out.println("Max scania max volume = " + scania.getVehicleMaxVolume());
+        System.out.println("Taken space = " +scania.getTakenSpace() + "%");
 
+        Store bigBang = new Store("bigBang", maribor);
+        System.out.println(bigBang);
 
-        System.out.println(audi.getTakenSpace());
-
-    System.out.println(audi.toString());
-
-    Store bigBang = new Store("bigBang", maribor);
-    System.out.println(bigBang.toString());
-
-    Route route = new Route(bigBang, auchanWarehouse, 200);
-    System.out.println(route.toString());
+        Route route = new Route(bigBang, auchanWarehouse, 200);
+        System.out.println(route);
     }
 }

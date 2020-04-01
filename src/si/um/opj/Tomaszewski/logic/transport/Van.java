@@ -15,18 +15,19 @@ public class Van extends Vehicle {
         super(registrationNumber, averageSpeed);
     }
 
-    public Van(String registrationNumber, double volume, double averageSpeed) {
-        super(registrationNumber, volume, averageSpeed);
+    public Van(String registrationNumber, double volume, double averageSpeed, int length) {
+        super(registrationNumber, volume, averageSpeed, length);
     }
 
 
-    public Van(String registrationNumber, double averageSpeed, FoodItemType foodItemType) {
+    public Van(String registrationNumber, double averageSpeed, FoodItemType foodItemType,  int length) {
         super(registrationNumber, averageSpeed);
         this.foodItemType = foodItemType;
+        this.length = length;
     }
 
-    public Van(String registrationNumber, double volume, double averageSpeed, FoodItemType foodItemType) {
-        super(registrationNumber, volume, averageSpeed);
+    public Van(String registrationNumber, double volume, double averageSpeed, FoodItemType foodItemType,  int length) {
+        super(registrationNumber, volume, averageSpeed, length);
         this.foodItemType = foodItemType;
     }
 
@@ -39,7 +40,7 @@ public class Van extends Vehicle {
     }
 
     @Override
-    double getVehicleMaxVolume() {
+    public double getVehicleMaxVolume() {
         return length;
     }
 
