@@ -22,6 +22,7 @@ public class FoodItem {
 
     // Constructors
 
+
     /**
      * Create si.um.opj.Tomaszewski.logic.FoodItem with empty fields
      */
@@ -82,6 +83,13 @@ public class FoodItem {
      * Return information about object in String
      * @return information as String about object (with all the fields)
      */
+    public double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
 
     @Override
     public String toString() {

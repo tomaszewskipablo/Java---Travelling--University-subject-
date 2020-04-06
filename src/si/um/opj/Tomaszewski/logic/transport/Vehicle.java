@@ -16,16 +16,15 @@ abstract public class Vehicle {
     protected String registrationNumber;
     protected double volume;
     protected double averageSpeed;
-
     protected FoodItem[] cargo;
-    protected int length=10;
-    protected int foodItemSize=0;
+
 
     // Constructors
     /**
      * Create si.um.opj.Tomaszewski.logic.transport.Vehicle with empty fields
      */
-    public Vehicle() {
+    public Vehicle(int length) {
+        this.cargo= new FoodItem[length];
     }
 
     /**
@@ -33,7 +32,8 @@ abstract public class Vehicle {
      * @param registrationNumber registrationNumber of si.um.opj.Tomaszewski.logic.transport.Vehicle
      * @param averageSpeed averageSpeed of si.um.opj.Tomaszewski.logic.transport.Vehicle
      */
-    public Vehicle(String registrationNumber, double averageSpeed) {
+    public Vehicle(String registrationNumber, double averageSpeed, int length) {
+        this(length);
         this.registrationNumber = registrationNumber;
         this.averageSpeed = averageSpeed;
     }
@@ -45,9 +45,8 @@ abstract public class Vehicle {
      * @param averageSpeed averageSpeed of si.um.opj.Tomaszewski.logic.transport.Vehicle
      */
     public Vehicle(String registrationNumber, double volume, double averageSpeed, int length) {
-        this(registrationNumber,averageSpeed);
+        this(registrationNumber,averageSpeed, length);
         this.volume = volume;
-        this.length = length;
     }
 
 
@@ -114,28 +113,43 @@ abstract public class Vehicle {
         return      Math.ceil(travelHours/24);
     }
 
+    // add product when empty
     public void loadFoodItem(FoodItem foodItem)
     {
-        if(foodItemSize<length) {
-            FoodItem[] temp = cargo;
-            cargo = new FoodItem[foodItemSize + 1];
-
-            for (int i = 0; i < foodItemSize; i++) {
-                cargo[i] = temp[i];
+        for (int i = 0; i < cargo.length; i++)
+        {
+            if (cargo[i] == null)
+            {
+                cargo[i] = foodItem;
+                break;
             }
-
-            cargo[foodItemSize] = foodItem;
-            foodItemSize++;
         }
     }
+
+
     public void unloadFoodItems()
     {
-        foodItemSize=0;
-        cargo = null;
+        for (int i = 0; i < cargo.length; i++)
+        {
+            cargo[i] = null;
+        }
     }
     public double getTakenSpace(){
-        return (double)foodItemSize/length * 100;
+
+        double takenSpace=0;
+        for (int i = 0; i < cargo.length; i++)
+        {
+            if (cargo[i]!=null)
+            {
+                takenSpace+= cargo[i].getVolume();
+            }
+        }
+
+        double takenPercentage = takenSpace / this.getVehicleMaxVolume() * 100;
+        return takenPercentage;
+
     }
+
 
     abstract public double getVehicleMaxVolume();
 
@@ -150,8 +164,6 @@ abstract public class Vehicle {
                 ", volume=" + volume +
                 ", averageSpeed=" + averageSpeed +
                 ", cargo=" + Arrays.toString(cargo) +
-                ", length=" + length +
-                ", foodItemSize=" + foodItemSize +
                 '}';
     }
 }

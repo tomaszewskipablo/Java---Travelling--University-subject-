@@ -2,42 +2,44 @@ package si.um.opj.Tomaszewski.logic.transport;
 
 public class Truck extends Vehicle {
 
-    private int numberOFTrailers;
+    private int numberOfTrailers;
 
-    public Truck(int numberOFTrailers) {
-        this.numberOFTrailers = numberOFTrailers;
+    public Truck(int length, int numberOFTrailers)
+    {
+        super(length);
+        this.numberOfTrailers = numberOfTrailers;
     }
 
-    public Truck(String registrationNumber, double averageSpeed, int numberOFTrailers) {
-        super(registrationNumber, averageSpeed);
-        this.numberOFTrailers = numberOFTrailers;
+    public Truck(String registrationNumber, double averageSpeed, int numberOfTrailers, int length) {
+        super(registrationNumber, averageSpeed, length);
+        this.numberOfTrailers = numberOfTrailers;
     }
 
-    public Truck(String registrationNumber, double volume, double averageSpeed, int numberOFTrailers, int length) {
+    public Truck(String registrationNumber, double volume, double averageSpeed, int numberOfTrailers, int length) {
         super(registrationNumber, volume, averageSpeed, length);
-        this.numberOFTrailers = numberOFTrailers;
+        this.numberOfTrailers = numberOfTrailers;
     }
 
     public int getNumberOFTrailers() {
-        return numberOFTrailers;
+        return numberOfTrailers;
     }
 
-    public void setNumberOFTrailers(int numberOFTrailers) {
-        this.numberOFTrailers = numberOFTrailers;
+    public void setNumberOFTrailers(int numberOfTrailers) {
+        this.numberOfTrailers = numberOfTrailers;
     }
 
 
 
     @Override
     public double getVehicleMaxVolume() {
-        return length * numberOFTrailers;
+        return super.volume * numberOfTrailers;
     }
 
     @Override
     public String toString() {
         return "Truck{" +
                 super.toString() +
-                "numberOFTrailers=" + numberOFTrailers +
+                "numberOFTrailers=" + numberOfTrailers +
                 '}';
     }
 }

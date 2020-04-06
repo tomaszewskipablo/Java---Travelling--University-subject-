@@ -31,13 +31,13 @@ public class Launcher {
         auchanWarehouse.addItem(carrot);
         auchanWarehouse.addItem(orange);
 
-        auchanWarehouse.toString();
+        System.out.println(auchanWarehouse);
 
         // count
         System.out.println("Number of Items: " + auchanWarehouse.returnTheNumberOfFoodItems());
 
         // VAN
-        Vehicle audi = new Van("SW182", 14,90, FoodItemType.FROZEN, 10);
+        Vehicle audi = new Van("SW182", 100,90, FoodItemType.FROZEN, 10);
         audi.loadFoodItem(orange);
         audi.loadFoodItem(carrot);
 
@@ -50,7 +50,7 @@ public class Launcher {
         audi.unloadFoodItems();
         System.out.println(audi);
         // TRUCK
-        Vehicle scania = new Truck("N1632", 60,40,2,18);
+        Vehicle scania = new Truck("N1632", 80,40,2,18);
         scania.loadFoodItem(orange);
         scania.loadFoodItem(carrot);
 
