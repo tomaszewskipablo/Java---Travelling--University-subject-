@@ -126,6 +126,13 @@ abstract public class Vehicle {
         }
     }
 
+    public void loadFoodItem(FoodItem [] foodItems)
+    {
+        for (int i = 0; i < foodItems.length; i++)
+        {
+            loadFoodItem(foodItems[i]);
+        }
+    }
 
     public void unloadFoodItems()
     {
