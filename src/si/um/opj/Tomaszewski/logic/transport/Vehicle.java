@@ -2,6 +2,7 @@ package si.um.opj.Tomaszewski.logic.transport;
 
 import si.um.opj.Tomaszewski.logic.FoodItem;
 import si.um.opj.Tomaszewski.logic.Route;
+import si.um.opj.Tomaszewski.logic.exceptions.CapacityExceededException;
 
 import java.util.Arrays;
 
@@ -35,6 +36,10 @@ abstract public class Vehicle {
     public Vehicle(String registrationNumber, double averageSpeed, int length) {
         this(length);
         this.registrationNumber = registrationNumber;
+        if(averageSpeed<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.averageSpeed = averageSpeed;
     }
 
@@ -46,6 +51,10 @@ abstract public class Vehicle {
      */
     public Vehicle(String registrationNumber, double volume, double averageSpeed, int length) {
         this(registrationNumber,averageSpeed, length);
+        if(volume<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.volume = volume;
     }
 
@@ -81,6 +90,10 @@ abstract public class Vehicle {
      * @param volume volume of vehicle
      */
     public void setVolume(double volume) {
+        if(volume<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.volume = volume;
     }
 
@@ -97,6 +110,10 @@ abstract public class Vehicle {
      * @param averageSpeed averageSpeed of vehicle
      */
     public void setAverageSpeed(double averageSpeed) {
+        if(averageSpeed<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.averageSpeed = averageSpeed;
     }
 
@@ -154,7 +171,31 @@ abstract public class Vehicle {
 
         double takenPercentage = takenSpace / this.getVehicleMaxVolume() * 100;
         return takenPercentage;
+    }
+    public double getFreeCapacity(){
+        return cargo.length - getTakenCapacity();
+    }
 
+    abstract public double getFreeVolume();
+
+    public double getTakenVolume() {
+        double takenVolume = 0;
+        for (int i = 0; i < cargo.length; i++) {
+            if (cargo[i] != null) {
+                takenVolume = takenVolume + cargo[i].getVolume();
+            }
+        }
+        return takenVolume;
+    }
+
+    public double getTakenCapacity() {
+        double takenCapacity = 0;
+        for (int i = 0; i < cargo.length; i++) {
+            if (cargo[i] != null) {
+                takenCapacity++;
+            }
+        }
+        return takenCapacity;
     }
 
 

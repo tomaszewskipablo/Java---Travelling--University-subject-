@@ -46,7 +46,15 @@ public class FoodItem {
      */
     public FoodItem(String label, double volume, double weight, java.time.LocalDate expirationDate) {
         this(label);
+        if(volume<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.volume = volume;
+        if(weight<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.weight = weight;
         this.expirationDate = expirationDate;
     }
@@ -84,11 +92,27 @@ public class FoodItem {
      * @return information as String about object (with all the fields)
      */
     public double getVolume() {
+        if(volume<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         return volume;
     }
 
     public void setVolume(double volume) {
+        if(volume<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.volume = volume;
+    }
+
+    public FoodItemType getFoodItemType() {
+        return foodItemType;
+    }
+
+    public void setFoodItemType(FoodItemType foodItemType) {
+        this.foodItemType = foodItemType;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package si.um.opj.Tomaszewski.logic.facility;
 
 import si.um.opj.Tomaszewski.logic.Location;
+import si.um.opj.Tomaszewski.logic.transport.Transportable;
+import si.um.opj.Tomaszewski.logic.transport.Vehicle;
 
 /**
  * Representation of store
@@ -10,7 +12,7 @@ import si.um.opj.Tomaszewski.logic.Location;
  */
 
 
-public class Store extends BusinessFacilitiy {
+public class Store extends BusinessFacilitiy implements Transportable {
 
 
     // Constructors
@@ -69,5 +71,10 @@ public class Store extends BusinessFacilitiy {
         return "Store{" +
                 super.toString() +
                 '}';
+    }
+
+    @Override
+    public void acceptVehicle(Vehicle vehicle) {
+        vehicle.unloadFoodItems();
     }
 }

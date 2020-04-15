@@ -31,6 +31,10 @@ public class Route {
     public Route(Store store, Warehouse warehouse, double distance) {
         this.store = store;
         this.warehouse = warehouse;
+        if(distance<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.distance = distance;
     }
     // Getters/Setters
@@ -79,6 +83,10 @@ public class Route {
      * @param distance distance of route
      */
     public void setDistance(double distance) {
+        if(distance<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
         this.distance = distance;
     }
 

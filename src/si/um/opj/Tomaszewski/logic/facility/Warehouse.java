@@ -2,6 +2,13 @@ package si.um.opj.Tomaszewski.logic.facility;
 
 import si.um.opj.Tomaszewski.logic.FoodItem;
 import si.um.opj.Tomaszewski.logic.Location;
+import si.um.opj.Tomaszewski.logic.transport.Transportable;
+import si.um.opj.Tomaszewski.logic.transport.Truck;
+import si.um.opj.Tomaszewski.logic.transport.Van;
+import si.um.opj.Tomaszewski.logic.transport.Vehicle;
+import si.um.opj.Tomaszewski.logic.exceptions.CapacityExceededException;
+import si.um.opj.Tomaszewski.logic.exceptions.FoodItemTypeException;
+import si.um.opj.Tomaszewski.logic.exceptions.VolumeExceededException;
 
 import java.util.Arrays;
 
@@ -12,25 +19,25 @@ import java.util.Arrays;
  * @since   2020-03-30
  */
 
-public class Warehouse extends BusinessFacilitiy{
+public class Warehouse extends BusinessFacilitiy implements Transportable {
 
-    private double capacity;
+
     private FoodItem[] foodItems;
-    private int foodItemSize=0;
 
     // Constructors
 
 
-    public Warehouse(String name, Location location, double capacity) {
+    public Warehouse(String name, Location location) {
         super(name, location);
-        this.capacity = capacity;
     }
 
-    public Warehouse(String name, Location location, double capacity, FoodItem[] foodItems, int foodItemSize) {
+    public Warehouse(String name, Location location, int capacity) throws java.lang.IllegalArgumentException{
         super(name, location);
-        this.capacity = capacity;
-        this.foodItems = foodItems;
-        this.foodItemSize = foodItemSize;
+        if(capacity<0)
+        {
+            throw new java.lang.IllegalArgumentException();
+        }
+        this.foodItems = new FoodItem[capacity];
     }
 
 
@@ -75,17 +82,16 @@ public class Warehouse extends BusinessFacilitiy{
      * @since 2020-03-20
      */
     public void addItem(FoodItem foodItem) {
-        if(foodItemSize<capacity&& stillValid(foodItem)) {
-            FoodItem[] temp = foodItems;
-            foodItems = new FoodItem[foodItemSize + 1];
 
-            for (int i = 0; i < foodItemSize; i++) {
-                foodItems[i] = temp[i];
+        if (stillValid(foodItem)==true)
+            for (int i = 0; i < foodItems.length; i++)
+            {
+                if (foodItems[i] == null)
+                {
+                    foodItems[i] = foodItem;
+                    break;
+                }
             }
-
-            foodItems[foodItemSize] = foodItem;
-            foodItemSize++;
-        }
     }
     /**
      * Removes food item from the warehouse's array
@@ -93,37 +99,16 @@ public class Warehouse extends BusinessFacilitiy{
      * @since 2020-03-20
      */
     public void removeItem(FoodItem foodItem){
-        int indexToRemove = indexOfFoodToRemove(foodItem);
-        if(indexToRemove>=0){
-            FoodItem[] temp = foodItems;
-            foodItemSize--;
-            foodItems = new FoodItem[foodItemSize];
-
-            int j = 0;
-            for(int i=0;i<foodItemSize;i++){
-                    if(j==indexToRemove) {
-                        j++;
-                    }
-                    foodItems[i]=temp[j];
-                    j++;
-                }
-            }
-    }
-
-    /**
-     * Gets index of item to be removed
-     * @param foodItem food item that we want to remove from the warehouse's array
-     * @return index of to be deleted item in the foodItems array
-     * @since 2020-03-20
-     */
-    private int indexOfFoodToRemove(FoodItem foodItem){
-        for(int i=0;i<foodItemSize;i++) {
-            if(foodItems[i].getLabel() == foodItem.getLabel()){
-                return i;
+        for (int i = 0; i < foodItems.length; i++)
+        {
+            if (foodItems[i] == foodItem)
+            {
+                foodItems[i] = null;
+                break;
             }
         }
-        return -1;
     }
+
 
     /**
      * returns how many food items are kept in FoodItems array
@@ -131,7 +116,16 @@ public class Warehouse extends BusinessFacilitiy{
      * @since 2020-03-20
      */
     public int returnTheNumberOfFoodItems(){
-        return foodItemSize;
+        int numberOfFoodItems = 0;
+
+        for (int i = 0; i < foodItems.length; i++)
+        {
+            if (foodItems[i] != null)
+            {
+                numberOfFoodItems++;
+            }
+        }
+        return numberOfFoodItems;
     }
 
 
@@ -141,14 +135,18 @@ public class Warehouse extends BusinessFacilitiy{
      * @return true/false if function found food item or not
      * @since 2020-03-20
      */
-   public boolean foodItemExists(String label) {
-       for(int i=0;i<foodItemSize;i++) {
-           if(foodItems[i].getLabel() == label){
-               return true;
-           }
-       }
-       return false;
-   }
+    public boolean foodItemExists(String label)
+    {
+        for (int i = 0; i < foodItems.length; i++)
+        {
+            if(foodItems[i] !=null) {
+                if (foodItems[i].getLabel() == label) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
    private Boolean stillValid(FoodItem foodItem){
       if(foodItem.getExpirationDate().compareTo(java.time.LocalDate.now().plusDays(3)) > 0) {
@@ -156,6 +154,93 @@ public class Warehouse extends BusinessFacilitiy{
       }
       return false;
    }
+    private double getVolumeOfAllItems(){
+        double takenVolume=0;
+        for (int i = 0; i < foodItems.length; i++)
+        {
+            if (foodItems[i]!=null)
+            {
+                takenVolume = takenVolume + foodItems[i].getVolume();
+            }
+        }
+        return takenVolume;
+    }
+
+    @Override
+    public void acceptVehicle(Vehicle vehicle)  throws CapacityExceededException, VolumeExceededException, FoodItemTypeException{
+        if(vehicle instanceof Truck) {
+            // ---------- Check all errors ----------
+            // CAPACITY exceeded
+            if(foodItems.length > vehicle.getFreeCapacity())
+            {
+                vehicle.unloadFoodItems();
+                throw new CapacityExceededException();
+            }
+            // VOLUME exceeded
+            if(getVolumeOfAllItems()>vehicle.getFreeVolume())
+            {
+                vehicle.unloadFoodItems();
+                throw new VolumeExceededException();
+            }
+            // ---------- Check all errors ----------
+
+            // ----------- Everything is all right -------
+            // load them on vehicle
+            vehicle.loadFoodItem(this.foodItems);
+            // set all warehouse items to null
+            for(int i=0;i<this.foodItems.length;i++) {
+                this.foodItems[i] = null;
+            }
+            // ----------- Everything is all right -------
+        }
+
+        if(vehicle instanceof Van) {
+            Boolean successVolume = true;
+            Boolean successType = true;
+            for(int i=0;i<this.foodItems.length;i++)
+            {
+                if(foodItems[i]!=null) {
+                    // ---------- Check all errors ----------
+                    // CAPACITY exceeded
+
+                    if (vehicle.getFreeCapacity() <= 0) {
+                        throw new CapacityExceededException();
+                    }
+                    // VOLUME exceeded
+                    if (vehicle.getFreeVolume() < foodItems[i].getVolume()) {
+                        successVolume = false;
+                    }
+                    //TYPE WRONG
+
+                    else if (foodItems[i].getFoodItemType() != ((Van) vehicle).getFoodItemType()) {
+                        successType = false;
+                    }
+
+                    // ---------- Check all errors ----------
+
+                    // ----------- Everything is all right -------
+
+                    else {
+                        vehicle.loadFoodItem(this.foodItems[i]);
+                        this.foodItems[i] = null;
+                    }
+
+                    // ----------- Everything is all right -------
+                }
+            }
+            // Throw exceptions for volume and foodType
+            // VOLUME exceeded
+            if(successVolume == false)
+            {
+                throw new VolumeExceededException();
+            }
+            //TYPE WRONG
+            if(successType == false)
+            {
+                throw new FoodItemTypeException();
+            }
+        }
+    }
 
     /**
      * Return information about object in String
@@ -165,10 +250,9 @@ public class Warehouse extends BusinessFacilitiy{
     @Override
     public String toString() {
         return "Warehouse{" +
-                "capacity=" + capacity +
-                ", foodItems=" + Arrays.toString(foodItems) +
-                ", foodItemSize=" + foodItemSize +
+                "foodItems=" + Arrays.toString(foodItems) +
                 super.toString() +
                 '}';
     }
+
 }

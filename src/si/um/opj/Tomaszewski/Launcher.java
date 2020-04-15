@@ -1,5 +1,6 @@
 package si.um.opj.Tomaszewski;
 
+import si.um.opj.Tomaszewski.logic.exceptions.CapacityExceededException;
 import si.um.opj.Tomaszewski.logic.facility.*;
 import si.um.opj.Tomaszewski.logic.*;
 import si.um.opj.Tomaszewski.logic.transport.*;
@@ -15,54 +16,139 @@ import si.um.opj.Tomaszewski.logic.transport.*;
 public class Launcher {
     public static void main(String[] args) {
 
-
         Location maribor = new Location("Maribor","Slovenia");
         System.out.println(maribor.toString());
-        Warehouse auchanWarehouse = new Warehouse("AuchanWarehouse", maribor, 1000);
+        Warehouse auchanWarehouse = new Warehouse("AuchanWarehouse", maribor, 20);
         System.out.println(auchanWarehouse.toString());
 
         // CREATE FOOD ITEMS
-        FoodItem carrot = new FoodItem("carrot",12,0.4,	 java.time.LocalDate.now().plusMonths(1));
+        FoodItem carrot = new FoodItem("carrot",12,0.4,	 java.time.LocalDate.now().plusMonths(1), FoodItemType.FRESH);
         System.out.println(carrot);
-        FoodItem orange = new FoodItem("orange",2,10,	 java.time.LocalDate.now());
+        FoodItem apple = new FoodItem("apple",4,1.2,	 java.time.LocalDate.now().plusMonths(11), FoodItemType.FRESH);
+        System.out.println(apple);
+        FoodItem orange = new FoodItem("orange",2,10,	 java.time.LocalDate.now(), FoodItemType.FRESH);
         System.out.println(orange);
 
         // ADD items
         auchanWarehouse.addItem(carrot);
         auchanWarehouse.addItem(orange);
+        auchanWarehouse.addItem(apple);
 
         System.out.println(auchanWarehouse);
 
-        // count
-        System.out.println("Number of Items: " + auchanWarehouse.returnTheNumberOfFoodItems());
 
-        // VAN
-        Vehicle audi = new Van("SW182", 100,90, FoodItemType.FROZEN, 10);
-        audi.loadFoodItem(orange);
-        audi.loadFoodItem(carrot);
+        System.out.println('\n' + "Exception test:");
 
-        System.out.println(audi);
+        // ------------------------ START TRUCK  ---------------------------
+        Vehicle scaniaSmallCapacity = new Truck("N1632", 80,40,2,18);
+    // Exception in CAPACITY werehouse = 20, truck = 18
+        double scaniaCapacity = scaniaSmallCapacity.getTakenCapacity() + scaniaSmallCapacity.getFreeCapacity();
+        System.out.println('\n' + "Capacity exception Truck.capacity = " + scaniaCapacity + "      " + auchanWarehouse);
+        try {
+            auchanWarehouse.acceptVehicle(scaniaSmallCapacity);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
 
-        System.out.println("Max audi max volume = " + audi.getVehicleMaxVolume());
-        System.out.println("Taken space = " + audi.getTakenSpace() + "%");
+        // Exception in VOLUME werehouse = 14, truck = 1
+        Vehicle scaniaSmallVolume = new Truck("N1632", 1,40,2,30);
+        System.out.println('\n' + "Volume exception Van.volume = 1 * 2 < warehouse.volume = 14 " + scaniaSmallVolume + "      " + auchanWarehouse);
+        try {
+            auchanWarehouse.acceptVehicle(scaniaSmallVolume);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
 
-        // Unload
-        audi.unloadFoodItems();
-        System.out.println(audi);
-        // TRUCK
-        Vehicle scania = new Truck("N1632", 80,40,2,18);
-        scania.loadFoodItem(orange);
-        scania.loadFoodItem(carrot);
+        // no exceptions
+        Vehicle scaniaBig = new Truck("N1632", 80,40,2,30);
+        try {
+            auchanWarehouse.acceptVehicle(scaniaBig);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
 
-        System.out.println(scania);
+        // ------------------------ END TRUCK  ---------------------------
 
-        System.out.println("Max scania max volume = " + scania.getVehicleMaxVolume());
-        System.out.println("Taken space = " +scania.getTakenSpace() + "%");
+        auchanWarehouse.addItem(carrot);
+        auchanWarehouse.addItem(orange);
+        // ADD items
+        auchanWarehouse.addItem(carrot);
+        auchanWarehouse.addItem(orange);
+        auchanWarehouse.addItem(apple);
 
-        Store bigBang = new Store("bigBang", maribor);
-        System.out.println(bigBang);
 
-        Route route = new Route(bigBang, auchanWarehouse, 200);
-        System.out.println(route);
+
+        // ------------------------ START VAN  ---------------------------
+
+        // Exception in CAPACITY werehouse = 20, Van = 10
+        Vehicle audiSmallCapacity = new Van("SW182", 100,90, FoodItemType.FRESH, 1);
+        double vanCapacity = audiSmallCapacity.getTakenCapacity() + audiSmallCapacity.getFreeCapacity();
+        System.out.println('\n' + "Capacity exception Van.capacity = " + vanCapacity + "      " + auchanWarehouse);
+        try {
+            auchanWarehouse.acceptVehicle(audiSmallCapacity);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
+
+
+
+        // Exception in VOLUME werehouse = 14, Van = 1
+        Vehicle audiSmallVolume = new Van("SW182", 1,90, FoodItemType.FRESH, 30);
+        System.out.println('\n' + "Volume exception Van.volume = 1 < warehouse.volume = 14 " + audiSmallVolume + "      " + auchanWarehouse);
+        try {
+            auchanWarehouse.acceptVehicle(audiSmallVolume);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
+        // no exceptions
+        Vehicle audiBig = new Van("SW182", 100,90, FoodItemType.FRESH, 30);
+        System.out.println('\n' + "No exception " + audiBig + "      " + auchanWarehouse);
+        try {
+            auchanWarehouse.acceptVehicle(audiBig);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
+
+        // Exception in FOODTYPE
+        // ADD items
+        auchanWarehouse.addItem(carrot);
+        auchanWarehouse.addItem(orange);
+        auchanWarehouse.addItem(apple);
+        FoodItem ice = new FoodItem("ice",5,2,	 java.time.LocalDate.now().plusMonths(3), FoodItemType.FROZEN);
+        auchanWarehouse.addItem(ice);
+        System.out.println('\n' + "Wrong foodType: only FRESH, and we try to load ICE (FROZEN): " + audiBig + "      " + auchanWarehouse);
+        try {
+            auchanWarehouse.acceptVehicle(audiBig);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        System.out.println('\n');
+                // ------------------------ END TRUCK  ---------------------------
+
+
     }
 }

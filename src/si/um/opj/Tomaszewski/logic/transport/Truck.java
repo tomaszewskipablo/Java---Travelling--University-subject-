@@ -28,7 +28,10 @@ public class Truck extends Vehicle {
         this.numberOfTrailers = numberOfTrailers;
     }
 
-
+    @Override
+    public double getFreeVolume(){
+        return getVehicleMaxVolume() - super.getTakenVolume();
+    }
 
     @Override
     public double getVehicleMaxVolume() {
