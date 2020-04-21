@@ -4,6 +4,7 @@ import si.um.opj.Tomaszewski.logic.exceptions.CapacityExceededException;
 import si.um.opj.Tomaszewski.logic.facility.*;
 import si.um.opj.Tomaszewski.logic.*;
 import si.um.opj.Tomaszewski.logic.transport.*;
+import si.um.opj.Tomaszewski.UI.*;
 
 /**
  * Main class for launching a program
@@ -15,6 +16,8 @@ import si.um.opj.Tomaszewski.logic.transport.*;
 
 public class Launcher {
     public static void main(String[] args) {
+
+
 
         Location maribor = new Location("Maribor","Slovenia");
         System.out.println(maribor.toString());
@@ -40,7 +43,48 @@ public class Launcher {
         System.out.println('\n' + "Exception test:");
 
         // ------------------------ START TRUCK  ---------------------------
-        Vehicle scaniaSmallCapacity = new Truck("N1632", 80,40,2,18);
+        Vehicle scaniaSmallCapacity1 = new Truck("N1632", 80,40,1,18);
+        // Exception in CAPACITY werehouse = 20, truck = 18
+        double scaniaCapacity1 = scaniaSmallCapacity1.getTakenCapacity() + scaniaSmallCapacity1.getFreeCapacity();
+        System.out.println('\n' + "Capacity exception Truck.capacity = " + scaniaCapacity1 + "      " + auchanWarehouse);
+        try {
+            auchanWarehouse.acceptVehicle(scaniaSmallCapacity1);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
+        // Exception in VOLUME werehouse = 14, truck = 1
+        Vehicle scaniaSmallVolume1 = new Truck("N1632", 1,40,1,30);
+        System.out.println('\n' + "Volume exception Van.volume = 1 < warehouse.volume = 14 " + scaniaSmallVolume1 + "      " + auchanWarehouse);
+        try {
+            auchanWarehouse.acceptVehicle(scaniaSmallVolume1);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
+        // no exceptions
+        Vehicle scaniaBig1 = new Truck("N1632", 80,40,1,30);
+        try {
+            auchanWarehouse.acceptVehicle(scaniaBig1);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
+        // ------------------------ END TRUCK  ---------------------------
+
+        System.out.println('\n');
+
+        // ------------------------ START TRUCK  ---------------------------
+        Vehicle scaniaSmallCapacity = new Truck("N1632", 80,40,5,18);
     // Exception in CAPACITY werehouse = 20, truck = 18
         double scaniaCapacity = scaniaSmallCapacity.getTakenCapacity() + scaniaSmallCapacity.getFreeCapacity();
         System.out.println('\n' + "Capacity exception Truck.capacity = " + scaniaCapacity + "      " + auchanWarehouse);
@@ -54,8 +98,8 @@ public class Launcher {
         }
 
         // Exception in VOLUME werehouse = 14, truck = 1
-        Vehicle scaniaSmallVolume = new Truck("N1632", 1,40,2,30);
-        System.out.println('\n' + "Volume exception Van.volume = 1 * 2 < warehouse.volume = 14 " + scaniaSmallVolume + "      " + auchanWarehouse);
+        Vehicle scaniaSmallVolume = new Truck("N1632", 1,40,5,30);
+        System.out.println('\n' + "Volume exception Van.volume = 1 * 5 < warehouse.volume = 14 " + scaniaSmallVolume + "      " + auchanWarehouse);
         try {
             auchanWarehouse.acceptVehicle(scaniaSmallVolume);
         }
@@ -66,7 +110,7 @@ public class Launcher {
         }
 
         // no exceptions
-        Vehicle scaniaBig = new Truck("N1632", 80,40,2,30);
+        Vehicle scaniaBig = new Truck("N1632", 80,40,5,30);
         try {
             auchanWarehouse.acceptVehicle(scaniaBig);
         }
@@ -86,7 +130,7 @@ public class Launcher {
         auchanWarehouse.addItem(apple);
 
 
-
+        System.out.println('\n');
         // ------------------------ START VAN  ---------------------------
 
         // Exception in CAPACITY werehouse = 20, Van = 10

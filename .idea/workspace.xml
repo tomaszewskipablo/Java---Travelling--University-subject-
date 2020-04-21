@@ -27,6 +27,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="245" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -45,14 +46,7 @@
       <recent name="si.um.opj.Tomaszewski.logic.transport" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Launcher">
-    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="si.um.opj.Tomaszewski.Launcher" />
-      <module name="assgment1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Test">
     <configuration name="Louncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Louncher" />
       <module name="assgment1" />
@@ -67,9 +61,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="si.um.opj.Tomaszewski.UI.Test" />
+      <module name="assgment1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.Louncher" />
+      <item itemvalue="Application.Program" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Launcher" />
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Louncher" />
         <item itemvalue="Application.Program" />
       </list>
@@ -97,11 +103,19 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1583826331760" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587495522980">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1587495522980" />
     <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1586896534022">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1586896534022" />
     <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586255931804" />
+    <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587495517522">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1587495517522" />
     <state x="566" y="297" width="444" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585668525488">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -110,26 +124,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="526" y="160" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1584914538986" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1586959583695">
+    <state width="1493" height="185" key="GridCell.Tab.0.bottom" timestamp="1587495530838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1586959583695" />
-    <state width="1493" height="332" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586958620919" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1586959583695">
+    <state width="1493" height="185" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1587495530838" />
+    <state width="1493" height="186" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587387945538" />
+    <state width="1493" height="185" key="GridCell.Tab.0.center" timestamp="1587495530838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1586959583695" />
-    <state width="1493" height="332" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586958620919" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1586959583695">
+    <state width="1493" height="185" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1587495530838" />
+    <state width="1493" height="186" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587387945538" />
+    <state width="1493" height="185" key="GridCell.Tab.0.left" timestamp="1587495530838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1586959583695" />
-    <state width="1493" height="332" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586958620919" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1586959583695">
+    <state width="1493" height="185" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1587495530838" />
+    <state width="1493" height="186" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587387945538" />
+    <state width="1493" height="185" key="GridCell.Tab.0.right" timestamp="1587495530838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1586959583695" />
-    <state width="1493" height="332" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586958620919" />
+    <state width="1493" height="185" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1587495530838" />
+    <state width="1493" height="186" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587387945538" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1586959583695">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
