@@ -43,10 +43,60 @@ public class Test extends JFrame {
     private JButton deleteBusinessButton;
     private JButton editBusinessButton;
     private JLabel capacityLabel;
+    private JRadioButton loadRadioButton;
+    private JRadioButton unloadRadioButton;
+    private JComboBox chooseVehicleAction;
+    private JLabel actionLabel;
+    private JLabel WhereLabel;
+    private JComboBox chooseBusinessAction;
+    private JButton submitButton;
 
     public Test()
     {
+// -------------------- BUSINESS START ---------------------
+        addBusinessButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                confirmBusinessButton.setText("Add");
+                chooseBusiness.setVisible(false);
+                chooseBusinessFacility.setVisible(false);
+            }
+        });
+        deleteBusinessButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                confirmBusinessButton.setText("Delete");
+                chooseBusiness.setVisible(true);
+                chooseBusinessFacility.setVisible(true);
+            }
+        });
+        editBusinessButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                confirmBusinessButton.setText("Edit");
+                chooseBusiness.setVisible(true);
+                chooseBusinessFacility.setVisible(true);
+            }
+        });
+        warehauseRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                storeRadioButton.setSelected(false);
+                capacityTextBox.setVisible(true);
+                capacityLabel.setVisible(true);
+            }
+        });
+        storeRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                warehauseRadioButton.setSelected(false);
+                capacityTextBox.setVisible(false);
+                capacityLabel.setVisible(false);
+            }
+        });
+        // -------------------- BUSINESS END ---------------------
 
+        // -------------------- VEHICLE START ---------------------
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -88,48 +138,7 @@ public class Test extends JFrame {
                 numberOfTrailersLabel.setText("Food Item type");
             }
         });
-        // -------------------- BUSINESS START ---------------------
-        addBusinessButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                confirmBusinessButton.setText("Add");
-                chooseBusiness.setVisible(false);
-                chooseBusinessFacility.setVisible(false);
-            }
-        });
-        deleteBusinessButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                confirmBusinessButton.setText("Delete");
-                chooseBusiness.setVisible(true);
-                chooseBusinessFacility.setVisible(true);
-            }
-        });
-        editBusinessButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                confirmBusinessButton.setText("Edit");
-                chooseBusiness.setVisible(true);
-                chooseBusinessFacility.setVisible(true);
-            }
-        });
-        warehauseRadioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                storeRadioButton.setSelected(false);
-                capacityTextBox.setVisible(true);
-                capacityLabel.setVisible(true);
-            }
-        });
-            storeRadioButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    warehauseRadioButton.setSelected(false);
-                    capacityTextBox.setVisible(false);
-                    capacityLabel.setVisible(false);
-                }
-        });
-        // -------------------- BUSINESS END ---------------------
+        // -------------------- VEHICLE END ---------------------
 
         // -------------------- FOODITEM START ---------------------
 
@@ -160,6 +169,26 @@ public class Test extends JFrame {
         });
 
         // -------------------- FOODITEM END ---------------------
+
+        // -------------------- VEHICLE LOAD/UNLOAD START ---------------------
+        loadRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                unloadRadioButton.setSelected(false);
+                actionLabel.setText("From");
+                WhereLabel.setText("Warehouse");
+
+            }
+        });
+        unloadRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                loadRadioButton.setSelected(false);
+                actionLabel.setText("To");
+                WhereLabel.setText("Store");
+            }
+            // -------------------- VEHICLE LOAD/UNLOAD END ---------------------
+        });
     }
 
     public static void main(String[] args) {

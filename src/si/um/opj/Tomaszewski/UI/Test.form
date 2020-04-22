@@ -1423,7 +1423,7 @@
                       <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </vspacer>
-                  <component id="deae9" class="javax.swing.JRadioButton">
+                  <component id="deae9" class="javax.swing.JRadioButton" binding="loadRadioButton">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -1434,7 +1434,7 @@
                       <text value="Load"/>
                     </properties>
                   </component>
-                  <component id="2787" class="javax.swing.JRadioButton">
+                  <component id="2787" class="javax.swing.JRadioButton" binding="unloadRadioButton">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -1445,7 +1445,7 @@
                       <text value="Unload"/>
                     </properties>
                   </component>
-                  <component id="54d4b" class="javax.swing.JComboBox">
+                  <component id="54d4b" class="javax.swing.JComboBox" binding="chooseBusinessAction">
                     <constraints>
                       <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -1462,7 +1462,7 @@
                       <opaque value="true"/>
                     </properties>
                   </component>
-                  <component id="43fcc" class="javax.swing.JLabel">
+                  <component id="43fcc" class="javax.swing.JLabel" binding="WhereLabel">
                     <constraints>
                       <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -1472,7 +1472,7 @@
                       <text value="Store"/>
                     </properties>
                   </component>
-                  <component id="8a1a" class="javax.swing.JLabel">
+                  <component id="8a1a" class="javax.swing.JLabel" binding="actionLabel">
                     <constraints>
                       <grid row="6" column="1" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -1482,7 +1482,7 @@
                       <text value="INTO"/>
                     </properties>
                   </component>
-                  <component id="522f8" class="javax.swing.JComboBox">
+                  <component id="522f8" class="javax.swing.JComboBox" binding="chooseVehicleAction">
                     <constraints>
                       <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -1511,7 +1511,7 @@
                       <text value="Choose object:"/>
                     </properties>
                   </component>
-                  <component id="9d13b" class="javax.swing.JButton">
+                  <component id="9d13b" class="javax.swing.JButton" binding="submitButton">
                     <constraints>
                       <grid row="14" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
