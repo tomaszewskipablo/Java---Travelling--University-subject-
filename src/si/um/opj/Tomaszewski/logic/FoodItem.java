@@ -104,6 +104,14 @@ public class FoodItem {
         return volume;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     public void setVolume(double volume) {
         if(volume<0)
         {

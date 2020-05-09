@@ -4,9 +4,12 @@ import si.um.opj.Tomaszewski.logic.FoodItem;
 import si.um.opj.Tomaszewski.logic.FoodItemType;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -168,7 +171,10 @@ public class Test extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 confirmFoodItemButton.setText("Add");
-                chooseFoodItem.setVisible(false);
+
+                chooseFoodItem.isDisplayable();
+
+
 
                 chooseFoodItemLabel.setVisible(false);
 
@@ -202,6 +208,7 @@ public class Test extends JFrame {
                 confirmFoodItemButton.setText("Edit");
                 chooseFoodItem.setVisible(true);
                 chooseFoodItemLabel.setVisible(true);
+
 
                 confirmFoodItemButton.setEnabled(false);
                 confirmFoodItemButton.setVisible(false);
@@ -299,6 +306,26 @@ public class Test extends JFrame {
                 }
             }
         });
+
+
+        chooseFoodItem.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                if(chooseFoodItem.getSelectedIndex() >= 0)
+                {
+                    int id = chooseFoodItem.getSelectedIndex();
+                    FoodItem selectedItem = foodItemArrayList.get(id);
+
+                    labelFoodItem.setText(selectedItem.getLabel());
+                    volumeFoodItem.setText(String.valueOf(selectedItem.getVolume()));
+                    weightFoodItem.setText(String.valueOf(selectedItem.getWeight()));
+                    ExpirationdateFoodItem.setText(String.valueOf(selectedItem.getExpirationDate()));
+
+                }
+                }
+            });
+
+
     }
 
 
