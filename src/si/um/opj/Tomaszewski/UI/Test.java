@@ -249,7 +249,7 @@ public class Test extends JFrame {
                 String label = labelFoodItem.getText();
                 double volume = Double.parseDouble(volumeFoodItem.getText());
                 double weight = Double.parseDouble(weightFoodItem.getText());
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate expirationDate= LocalDate.parse(ExpirationdateFoodItem.getText(), formatter);
 
                 FoodItemType foodItemType;
@@ -285,7 +285,7 @@ public class Test extends JFrame {
                     String label = labelFoodItem.getText();
                     double volume = Double.parseDouble(volumeFoodItem.getText());
                     double weight = Double.parseDouble(weightFoodItem.getText());
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     LocalDate expirationDate = LocalDate.parse(ExpirationdateFoodItem.getText(), formatter);
 
                     FoodItemType foodItemType;
