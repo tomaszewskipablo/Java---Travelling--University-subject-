@@ -16,6 +16,8 @@ public class FoodItem {
     private String label;
     private double volume;
     private double weight;
+
+
     private java.time.LocalDate expirationDate;
     private FoodItemType foodItemType;
 
@@ -66,6 +68,9 @@ public class FoodItem {
 
 
     // Getters/Setters
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
 
     /**
      * set label of foodItem

@@ -246,12 +246,48 @@ public class Test extends JFrame {
                 LocalDate expirationDate= LocalDate.parse(ExpirationdateFoodItem.getText(), formatter);
                 FoodItemType foodItemType = FoodItemType.FROZEN;
 
-                FoodItem foodItem=new FoodItem(label,volume,weight,expirationDate,foodItemType);
+                FoodItem foodItem = new FoodItem(label,volume,weight,expirationDate,foodItemType);
                 foodItemModel.addElement(foodItem);
                 foodItemArrayList.add(foodItem);
             }
         });
+
+
+        deleteConfirmFoodItemButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+        editConfirmFoodItemButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(chooseFoodItem.getSelectedIndex()>=0) {
+                    String label = labelFoodItem.getText();
+                    double volume = Double.parseDouble(volumeFoodItem.getText());
+                    double weight = Double.parseDouble(weightFoodItem.getText());
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+                    LocalDate expirationDate = LocalDate.parse(ExpirationdateFoodItem.getText(), formatter);
+
+                    FoodItemType foodItemType = FoodItemType.FROZEN;
+                    int id = chooseFoodItem.getSelectedIndex();
+                    FoodItem foodItem = foodItemArrayList.get(id);
+
+                    foodItem.setLabel(label);
+                    foodItem.setVolume(volume);
+                    foodItem.setExpirationDate(expirationDate);
+                    foodItem.setFoodItemType(foodItemType);
+                }
+            }
+        });
     }
+
+
+
+
+
+
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Test");
