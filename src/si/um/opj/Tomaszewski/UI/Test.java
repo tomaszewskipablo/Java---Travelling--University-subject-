@@ -256,7 +256,12 @@ public class Test extends JFrame {
         deleteConfirmFoodItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if(chooseFoodItem.getSelectedIndex()>=0) {
+                    int id = chooseFoodItem.getSelectedIndex();
 
+                    foodItemArrayList.remove(id);
+                    foodItemModel.remove(id);
+                }
             }
         });
         editConfirmFoodItemButton.addActionListener(new ActionListener() {
