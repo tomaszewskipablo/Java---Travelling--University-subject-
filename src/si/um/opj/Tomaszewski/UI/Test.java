@@ -1,9 +1,15 @@
 package si.um.opj.Tomaszewski.UI;
 
+import si.um.opj.Tomaszewski.logic.FoodItem;
+import si.um.opj.Tomaszewski.logic.FoodItemType;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class Test extends JFrame {
 
@@ -31,7 +37,7 @@ public class Test extends JFrame {
     private JTextField capacityTextBox;
     private JRadioButton warehauseRadioButton;
     private JRadioButton storeRadioButton;
-    private JComboBox chooseFoodItem;
+    private JList chooseFoodItem;
     private JLabel chooseFoodItemLabel;
     private JPanel confirmFoodButton;
     private JButton confirmFoodItemButton;
@@ -50,9 +56,23 @@ public class Test extends JFrame {
     private JLabel WhereLabel;
     private JComboBox chooseBusinessAction;
     private JButton submitButton;
+    private JTextField labelFoodItem;
+    private JTextField volumeFoodItem;
+    private JTextField weightFoodItem;
+    private JTextField ExpirationdateFoodItem;
+    private JComboBox ComboxFoodType;
+    private JButton deleteConfirmFoodItemButton;
+    private JButton editConfirmFoodItemButton;
+
+    private ArrayList<FoodItem> foodItemArrayList = new ArrayList<FoodItem>();// arraylist that has only Singers
+    final private DefaultListModel<FoodItem> foodItemModel = new DefaultListModel<FoodItem>(); //creating model for jList
+
 
     public Test()
     {
+        chooseFoodItem.setModel(foodItemModel);
+
+
 // -------------------- BUSINESS START ---------------------
         addBusinessButton.addActionListener(new ActionListener() {
             @Override
@@ -66,6 +86,7 @@ public class Test extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 confirmBusinessButton.setText("Delete");
+                //show()
                 chooseBusiness.setVisible(true);
                 chooseBusinessFacility.setVisible(true);
             }
@@ -148,7 +169,16 @@ public class Test extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 confirmFoodItemButton.setText("Add");
                 chooseFoodItem.setVisible(false);
+
                 chooseFoodItemLabel.setVisible(false);
+
+
+                confirmFoodItemButton.setEnabled(true);
+                confirmFoodItemButton.setVisible(true);
+                deleteConfirmFoodItemButton.setEnabled(false);
+                deleteConfirmFoodItemButton.setVisible(false);
+                editConfirmFoodItemButton.setEnabled(false);
+                editConfirmFoodItemButton.setVisible(false);
             }
         });
         deleteFoodItemButton.addActionListener(new ActionListener() {
@@ -157,6 +187,13 @@ public class Test extends JFrame {
                 confirmFoodItemButton.setText("Delete");
                 chooseFoodItem.setVisible(true);
                 chooseFoodItemLabel.setVisible(true);
+
+                confirmFoodItemButton.setEnabled(false);
+                confirmFoodItemButton.setVisible(false);
+                deleteConfirmFoodItemButton.setEnabled(true);
+                deleteConfirmFoodItemButton.setVisible(true);
+                editConfirmFoodItemButton.setEnabled(false);
+                editConfirmFoodItemButton.setVisible(false);
             }
         });
         editFoodItemButton.addActionListener(new ActionListener() {
@@ -165,6 +202,13 @@ public class Test extends JFrame {
                 confirmFoodItemButton.setText("Edit");
                 chooseFoodItem.setVisible(true);
                 chooseFoodItemLabel.setVisible(true);
+
+                confirmFoodItemButton.setEnabled(false);
+                confirmFoodItemButton.setVisible(false);
+                deleteConfirmFoodItemButton.setEnabled(false);
+                deleteConfirmFoodItemButton.setVisible(false);
+                editConfirmFoodItemButton.setEnabled(true);
+                editConfirmFoodItemButton.setVisible(true);
             }
         });
 
@@ -188,6 +232,24 @@ public class Test extends JFrame {
                 WhereLabel.setText("Store");
             }
             // -------------------- VEHICLE LOAD/UNLOAD END ---------------------
+        });
+
+        // -------------------- FOODITEM MENAGEMENT START ---------------------
+        confirmFoodItemButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                String label = labelFoodItem.getText();
+                double volume = Double.parseDouble(volumeFoodItem.getText());
+                double weight = Double.parseDouble(weightFoodItem.getText());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+                LocalDate expirationDate= LocalDate.parse(ExpirationdateFoodItem.getText(), formatter);
+                FoodItemType foodItemType = FoodItemType.FROZEN;
+
+                FoodItem foodItem=new FoodItem(label,volume,weight,expirationDate,foodItemType);
+                foodItemModel.addElement(foodItem);
+                foodItemArrayList.add(foodItem);
+            }
         });
     }
 
