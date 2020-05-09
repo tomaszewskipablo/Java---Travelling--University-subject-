@@ -244,7 +244,14 @@ public class Test extends JFrame {
                 double weight = Double.parseDouble(weightFoodItem.getText());
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
                 LocalDate expirationDate= LocalDate.parse(ExpirationdateFoodItem.getText(), formatter);
-                FoodItemType foodItemType = FoodItemType.FROZEN;
+
+                FoodItemType foodItemType;
+                if(ComboxFoodType.getSelectedIndex()==0){
+                    foodItemType = FoodItemType.FROZEN;
+                }
+                else {
+                    foodItemType = FoodItemType.FRESH;
+                }
 
                 FoodItem foodItem = new FoodItem(label,volume,weight,expirationDate,foodItemType);
                 foodItemModel.addElement(foodItem);
@@ -274,7 +281,14 @@ public class Test extends JFrame {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
                     LocalDate expirationDate = LocalDate.parse(ExpirationdateFoodItem.getText(), formatter);
 
-                    FoodItemType foodItemType = FoodItemType.FROZEN;
+                    FoodItemType foodItemType;
+                    if(ComboxFoodType.getSelectedIndex()==0){
+                       foodItemType = FoodItemType.FROZEN;
+                    }
+                    else {
+                        foodItemType = FoodItemType.FRESH;
+                    }
+
                     int id = chooseFoodItem.getSelectedIndex();
                     FoodItem foodItem = foodItemArrayList.get(id);
 
