@@ -73,6 +73,7 @@ public class Test extends JFrame {
     private JButton editConfirmVehicleButton;
     private JButton confirmVehicleButton;
     private JList list1;
+    private JList chooseBussines;
 
     private ArrayList<FoodItem> foodItemArrayList = new ArrayList<FoodItem>();// arraylist that has only Singers
     final private DefaultListModel<FoodItem> foodItemModel = new DefaultListModel<FoodItem>(); //creating model for jList
@@ -104,7 +105,7 @@ public class Test extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 confirmBusinessButton.setText("Delete");
                 //show()
-                
+
                 chooseBusinessFacility.setVisible(true);
 
                 confirmBusinessButton.setEnabled(false);
