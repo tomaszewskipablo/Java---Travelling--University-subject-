@@ -36,7 +36,7 @@ public class Test extends JFrame {
     private JComboBox chooseVehicleAction;
     private JLabel numberOfTrailersLabel;
     private JLabel chooseVehicleLabel;
-    private JComboBox chooseBusiness;
+
     private JLabel chooseBusinessFacility;
     private JTextField capacityTextBox;
     private JRadioButton warehauseRadioButton;
@@ -88,7 +88,7 @@ public class Test extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 confirmBusinessButton.setText("Add");
-                chooseBusiness.setVisible(false);
+
                 chooseBusinessFacility.setVisible(false);
 
                 confirmBusinessButton.setEnabled(true);
@@ -104,7 +104,7 @@ public class Test extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 confirmBusinessButton.setText("Delete");
                 //show()
-                chooseBusiness.setVisible(true);
+                
                 chooseBusinessFacility.setVisible(true);
 
                 confirmBusinessButton.setEnabled(false);
@@ -119,7 +119,7 @@ public class Test extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 confirmBusinessButton.setText("Edit");
-                chooseBusiness.setVisible(true);
+
                 chooseBusinessFacility.setVisible(true);
 
 
