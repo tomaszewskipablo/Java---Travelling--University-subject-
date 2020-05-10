@@ -227,31 +227,11 @@
                           <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </hspacer>
-                      <vspacer id="8a96b">
-                        <constraints>
-                          <grid row="12" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </vspacer>
-                      <vspacer id="c0778">
-                        <constraints>
-                          <grid row="14" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </vspacer>
                       <vspacer id="3eb0d">
                         <constraints>
                           <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </vspacer>
-                      <component id="95b4d" class="javax.swing.JButton" binding="confirmBusinessButton">
-                        <constraints>
-                          <grid row="13" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <autoscrolls value="false"/>
-                          <background color="-3684409"/>
-                          <text value="Add"/>
-                        </properties>
-                      </component>
                       <vspacer id="b49a3">
                         <constraints>
                           <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
@@ -351,6 +331,36 @@
                           <grid row="10" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </vspacer>
+                      <component id="2f3e4" class="javax.swing.JButton" binding="deleteConfirmBussinesButton">
+                        <constraints>
+                          <grid row="12" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <background color="-3684409"/>
+                          <text value="Delete"/>
+                        </properties>
+                      </component>
+                      <component id="ac9be" class="javax.swing.JButton" binding="editConfirmBussinesButton">
+                        <constraints>
+                          <grid row="14" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <background color="-3684409"/>
+                          <text value="Edit"/>
+                        </properties>
+                      </component>
+                      <component id="95b4d" class="javax.swing.JButton" binding="confirmBusinessButton">
+                        <constraints>
+                          <grid row="13" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <background color="-3684409"/>
+                          <text value="Add"/>
+                        </properties>
+                      </component>
                     </children>
                   </grid>
                 </children>
@@ -566,22 +576,12 @@
                           <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </hspacer>
-                      <vspacer id="1da5e">
-                        <constraints>
-                          <grid row="13" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </vspacer>
-                      <vspacer id="a9452">
-                        <constraints>
-                          <grid row="15" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </vspacer>
                       <vspacer id="70d85">
                         <constraints>
                           <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </vspacer>
-                      <component id="5e788" class="javax.swing.JButton" binding="confirmButton">
+                      <component id="5e788" class="javax.swing.JButton" binding="confirmVehicleButton">
                         <constraints>
                           <grid row="14" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -696,37 +696,51 @@
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </vspacer>
-                      <component id="d8aa3" class="javax.swing.JComboBox" binding="chooseVehicle">
-                        <constraints>
-                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <alignmentX value="0.5"/>
-                          <autoscrolls value="false"/>
-                          <background color="-12369085"/>
-                          <font size="14"/>
-                          <foreground color="-1"/>
-                          <model>
-                            <item value="skoda"/>
-                            <item value="scania"/>
-                            <item value="audi"/>
-                            <item value="marcedes-benz"/>
-                          </model>
-                          <opaque value="true"/>
-                          <visible value="false"/>
-                        </properties>
-                      </component>
                       <component id="1c610" class="javax.swing.JLabel" binding="chooseVehicleLabel">
                         <constraints>
                           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
+                          <enabled value="true"/>
                           <font size="14"/>
                           <foreground color="-1"/>
                           <text value="Choose object:"/>
-                          <visible value="false"/>
+                          <visible value="true"/>
                         </properties>
                       </component>
+                      <component id="26311" class="javax.swing.JButton" binding="deleteConfirmVehicleButton">
+                        <constraints>
+                          <grid row="13" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <background color="-3684409"/>
+                          <text value="Delete"/>
+                        </properties>
+                      </component>
+                      <component id="df14e" class="javax.swing.JButton" binding="editConfirmVehicleButton">
+                        <constraints>
+                          <grid row="15" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <background color="-3684409"/>
+                          <text value="Edit"/>
+                        </properties>
+                      </component>
+                      <scrollpane id="22238">
+                        <constraints>
+                          <grid row="2" column="1" row-span="7" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="5762d" class="javax.swing.JList" binding="list1" default-binding="true">
+                            <constraints/>
+                            <properties/>
+                          </component>
+                        </children>
+                      </scrollpane>
                     </children>
                   </grid>
                 </children>

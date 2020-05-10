@@ -33,6 +33,7 @@ public class Test extends JFrame {
     private JTextField textField6;
     private JTextField textField7;
     private JComboBox chooseVehicle;
+    private JComboBox chooseVehicleAction;
     private JLabel numberOfTrailersLabel;
     private JLabel chooseVehicleLabel;
     private JComboBox chooseBusiness;
@@ -54,7 +55,7 @@ public class Test extends JFrame {
     private JLabel capacityLabel;
     private JRadioButton loadRadioButton;
     private JRadioButton unloadRadioButton;
-    private JComboBox chooseVehicleAction;
+
     private JLabel actionLabel;
     private JLabel WhereLabel;
     private JComboBox chooseBusinessAction;
@@ -66,6 +67,12 @@ public class Test extends JFrame {
     private JComboBox ComboxFoodType;
     private JButton deleteConfirmFoodItemButton;
     private JButton editConfirmFoodItemButton;
+    private JButton deleteConfirmBussinesButton;
+    private JButton editConfirmBussinesButton;
+    private JButton deleteConfirmVehicleButton;
+    private JButton editConfirmVehicleButton;
+    private JButton confirmVehicleButton;
+    private JList list1;
 
     private ArrayList<FoodItem> foodItemArrayList = new ArrayList<FoodItem>();// arraylist that has only Singers
     final private DefaultListModel<FoodItem> foodItemModel = new DefaultListModel<FoodItem>(); //creating model for jList
@@ -83,6 +90,13 @@ public class Test extends JFrame {
                 confirmBusinessButton.setText("Add");
                 chooseBusiness.setVisible(false);
                 chooseBusinessFacility.setVisible(false);
+
+                confirmBusinessButton.setEnabled(true);
+                confirmBusinessButton.setVisible(true);
+                deleteConfirmBussinesButton.setEnabled(false);
+                deleteConfirmBussinesButton.setVisible(false);
+                editConfirmBussinesButton.setEnabled(false);
+                editConfirmBussinesButton.setVisible(false);
             }
         });
         deleteBusinessButton.addActionListener(new ActionListener() {
@@ -92,6 +106,13 @@ public class Test extends JFrame {
                 //show()
                 chooseBusiness.setVisible(true);
                 chooseBusinessFacility.setVisible(true);
+
+                confirmBusinessButton.setEnabled(false);
+                confirmBusinessButton.setVisible(false);
+                deleteConfirmBussinesButton.setEnabled(true);
+                deleteConfirmBussinesButton.setVisible(true);
+                editConfirmBussinesButton.setEnabled(false);
+                editConfirmBussinesButton.setVisible(false);
             }
         });
         editBusinessButton.addActionListener(new ActionListener() {
@@ -100,6 +121,14 @@ public class Test extends JFrame {
                 confirmBusinessButton.setText("Edit");
                 chooseBusiness.setVisible(true);
                 chooseBusinessFacility.setVisible(true);
+
+
+                confirmBusinessButton.setEnabled(false);
+                confirmBusinessButton.setVisible(false);
+                deleteConfirmBussinesButton.setEnabled(false);
+                deleteConfirmBussinesButton.setVisible(false);
+                editConfirmBussinesButton.setEnabled(true);
+                editConfirmBussinesButton.setVisible(true);
             }
         });
         warehauseRadioButton.addActionListener(new ActionListener() {
@@ -128,6 +157,13 @@ public class Test extends JFrame {
                 chooseVehicleLabel.setVisible(false);
                 confirmButton.setText("Add");
                 vehicleLayout.setVisible(true);
+
+                deleteConfirmVehicleButton.setEnabled(false);
+                deleteConfirmVehicleButton.setVisible(false);
+                confirmVehicleButton.setEnabled(true);
+                confirmVehicleButton.setVisible(true);
+                editConfirmVehicleButton.setEnabled(false);
+                editConfirmVehicleButton.setVisible(false);
             }
         });
         editButton.addActionListener(new ActionListener() {
@@ -137,6 +173,13 @@ public class Test extends JFrame {
                 chooseVehicleLabel.setVisible(true);
                 confirmButton.setText("Edit");
                 vehicleLayout.setVisible(true);
+
+                deleteConfirmVehicleButton.setEnabled(false);
+                deleteConfirmVehicleButton.setVisible(false);
+                confirmVehicleButton.setEnabled(false);
+                confirmVehicleButton.setVisible(false);
+                editConfirmVehicleButton.setEnabled(true);
+                editConfirmVehicleButton.setVisible(true);
             }
         });
         deleteButton.addActionListener(new ActionListener() {
@@ -146,6 +189,14 @@ public class Test extends JFrame {
                 chooseVehicleLabel.setVisible(true);
                 confirmButton.setText("Delete");
                 vehicleLayout.setVisible(true);
+
+
+                deleteConfirmVehicleButton.setEnabled(true);
+                deleteConfirmVehicleButton.setVisible(true);
+                confirmFoodItemButton.setEnabled(false);
+                confirmFoodItemButton.setVisible(false);
+                editConfirmVehicleButton.setEnabled(false);
+                editConfirmVehicleButton.setVisible(false);
             }
         });
         truckRadioButton.addActionListener(new ActionListener() {
@@ -171,8 +222,6 @@ public class Test extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 confirmFoodItemButton.setText("Add");
-
-                chooseFoodItem.isDisplayable();
 
 
 
