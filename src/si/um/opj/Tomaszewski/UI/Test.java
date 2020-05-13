@@ -556,6 +556,46 @@ public class Test extends JFrame {
                 }
             }
         });
+        editConfirmVehicleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String registration = labelVehicle.getText();
+                double volume = Double.parseDouble(volumeVehicle.getText());
+                double speed = Double.parseDouble(speedVehicle.getText());
+                int length = Integer.parseInt(lengthVehicle.getText());
+
+                //Truck
+                if(truckRadioButton.isSelected() && chooseVehicle.getSelectedIndex()>=0){
+                    int id = chooseVehicle.getSelectedIndex();
+                    Truck truck = truckArrayList.get(id);
+
+                    int trails = Integer.parseInt(trailsVehicle.getText());
+
+                    truck.setRegistrationNumber(registration);
+                    truck.setVolume(volume);
+                    truck.setAverageSpeed(speed);
+                    truck.setNumberOFTrailers(trails);
+                }
+                //VAN
+                else if(vanRadioButton.isSelected() && chooseVan.getSelectedIndex()>=0){
+                    int id = chooseVan.getSelectedIndex();
+                    Van van = vanArrayList.get(id);
+
+                    FoodItemType foodItemType;
+                    if(foodType.getSelectedIndex()==0){
+                        foodItemType = FoodItemType.FROZEN;
+                    }
+                    else {
+                        foodItemType = FoodItemType.FRESH;
+                    }
+
+                    van.setRegistrationNumber(registration);
+                    van.setVolume(volume);
+                    van.setAverageSpeed(speed);
+                    van.setFoodItemType(foodItemType);
+                }
+            }
+        });
     }
 
 

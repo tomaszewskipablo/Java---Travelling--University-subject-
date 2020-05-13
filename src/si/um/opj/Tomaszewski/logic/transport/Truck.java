@@ -27,6 +27,17 @@ public class Truck extends Vehicle {
     public void setNumberOFTrailers(int numberOfTrailers) {
         this.numberOfTrailers = numberOfTrailers;
     }
+    public void setVolume(double volume){
+        setVolume(volume);
+    }
+    public void setAverageSpeed(double speed){
+        setAverageSpeed(speed);
+    }
+
+    @Override
+    public void setRegistrationNumber(String registrationNumber) {
+        super.setRegistrationNumber(registrationNumber);
+    }
 
     @Override
     public double getFreeVolume(){
