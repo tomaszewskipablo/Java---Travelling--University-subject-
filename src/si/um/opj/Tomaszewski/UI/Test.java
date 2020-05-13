@@ -6,6 +6,8 @@ import si.um.opj.Tomaszewski.logic.Location;
 import si.um.opj.Tomaszewski.logic.facility.BusinessFacilitiy;
 import si.um.opj.Tomaszewski.logic.facility.Store;
 import si.um.opj.Tomaszewski.logic.facility.Warehouse;
+import si.um.opj.Tomaszewski.logic.transport.Truck;
+import si.um.opj.Tomaszewski.logic.transport.Van;
 import si.um.opj.Tomaszewski.logic.transport.Vehicle;
 
 import javax.swing.*;
@@ -97,8 +99,11 @@ public class Test extends JFrame {
     private ArrayList<Warehouse> warehouseArrayList = new ArrayList<Warehouse>();
      private DefaultListModel<Warehouse> warehouseModel = new DefaultListModel<Warehouse>();
 
-    private ArrayList<Vehicle> vehicleArrayList = new ArrayList<Vehicle>();
-     private DefaultListModel<Vehicle> vehicleModel = new DefaultListModel<Vehicle>();
+    private ArrayList<Truck> truckArrayList = new ArrayList<Truck>();
+     private DefaultListModel<Truck> truckModel = new DefaultListModel<Truck>();
+
+    private ArrayList<Van> vanArrayList = new ArrayList<Van>();
+    private DefaultListModel<Van> vanModel = new DefaultListModel<Van>();
 
     private JList FoodItemToAdd;
     private JList chooseFoodItem;
@@ -107,6 +112,9 @@ public class Test extends JFrame {
     private JList chooseStore;
     private JList chooseWarehouse;
     private JList loadWarehouse;
+    private JList chooseVan;
+    private JComboBox foodType;
+    private JLabel foodTypeLabel;
 
     public Test()
     {
@@ -119,7 +127,8 @@ public class Test extends JFrame {
         // models works this would work FoodItemToAdd.setModel(vehicleModel), the problem is with JList
         chooseStore.setModel(storeModel);
         chooseWarehouse.setModel(warehouseModel);
-        chooseVehicle.setModel(vehicleModel);
+        chooseVehicle.setModel(truckModel);
+        chooseVan.setModel(vanModel);
 
 
 // -------------------- BUSINESS START ---------------------
@@ -226,13 +235,20 @@ public class Test extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 vanRadioButton.setSelected(false);
                 numberOfTrailersLabel.setText("Number of trailers");
+                numberOfTrailersLabel.setVisible(true);
+                trailsVehicle.setVisible(true);
+                foodType.setVisible(false);
+                foodTypeLabel.setVisible(false);
             }
         });
         vanRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 truckRadioButton.setSelected(false);
-                numberOfTrailersLabel.setText("Food Item type");
+                numberOfTrailersLabel.setVisible(false);
+                foodType.setVisible(true);
+                foodTypeLabel.setVisible(true);
+                trailsVehicle.setVisible(false);
             }
         });
         // -------------------- VEHICLE END ---------------------
@@ -399,7 +415,7 @@ public class Test extends JFrame {
         addVehicleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                chooseVehicle.setVisible(false);
+
                 chooseVehicleLabel.setVisible(false);
 
                 vehicleLayout.setVisible(true);
@@ -496,7 +512,48 @@ public class Test extends JFrame {
         confirmVehicleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                
+                String label = labelVehicle.getText();
+                double volume = Double.parseDouble(volumeVehicle.getText());
+                double weight = Double.parseDouble(maxVehicle.getText());
+                int length = Integer.parseInt(lengthVehicle.getText());
+
+                if(truckRadioButton.isSelected() ) {
+                    int trails = Integer.parseInt(trailsVehicle.getText());
+
+                    Truck truck = new Truck(label, volume, weight, trails, length);
+                    truckModel.addElement(truck);
+                    truckArrayList.add(truck);
+                }
+                else if(vanRadioButton.isSelected() ) {
+                    FoodItemType foodItemType;
+                    if(foodType.getSelectedIndex()==0){
+                        foodItemType = FoodItemType.FROZEN;
+                    }
+                    else {
+                        foodItemType = FoodItemType.FRESH;
+                    }
+
+                    Van van = new Van(label, volume, weight, foodItemType, length);
+                    vanModel.addElement(van);
+                    vanArrayList.add(van);
+                }
+            }
+        });
+        deleteConfirmVehicleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(truckRadioButton.isSelected() && chooseVehicle.getSelectedIndex()>=0){
+                    int id = chooseVehicle.getSelectedIndex();
+
+                    truckArrayList.remove(id);
+                    truckModel.remove(id);
+                }
+                else if(vanRadioButton.isSelected() && chooseVan.getSelectedIndex()>=0){
+                    int id = chooseVan.getSelectedIndex();
+
+                    vanArrayList.remove(id);
+                    vanModel.remove(id);
+                }
             }
         });
     }

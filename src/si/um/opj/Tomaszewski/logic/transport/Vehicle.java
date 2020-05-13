@@ -59,8 +59,7 @@ abstract public class Vehicle {
     }
 
 
-
-    // Getters/Setters
+// Getters/Setters
     /**
      * get registrationNumber of vehicle
      * @return registrationNumber of vehicle

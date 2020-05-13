@@ -24,6 +24,7 @@ public class Van extends Vehicle {
 
     public Van(String registrationNumber, double volume, double averageSpeed, FoodItemType foodItemType,  int length) {
         super(registrationNumber, volume, averageSpeed, length);
+
         this.foodItemType = foodItemType;
     }
 
