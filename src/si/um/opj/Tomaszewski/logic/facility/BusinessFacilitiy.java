@@ -13,6 +13,7 @@ abstract public class BusinessFacilitiy {
         this.location = location;
     }
 
+
     @Override
     public String toString() {
         return "BusinessFacilitiy{" +

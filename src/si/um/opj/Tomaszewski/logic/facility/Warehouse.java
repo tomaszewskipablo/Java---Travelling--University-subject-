@@ -74,6 +74,21 @@ public class Warehouse extends BusinessFacilitiy implements Transportable {
         this.location = location;
     }
 
+    public void setCapacity(int capacity)
+    {
+        ;
+       /* int number = returnTheNumberOfFoodItems();
+        FoodItem[] array = new FoodItem[capacity];
+        for(int i=0;i<number;i++)
+        {
+            if(i>=capacity)
+            {
+                break;
+            }
+            array[i] = foodItems[i];
+        } */
+    }
+
     // Methods
 
     /**

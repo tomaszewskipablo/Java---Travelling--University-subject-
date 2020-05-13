@@ -16,8 +16,6 @@ public class FoodItem {
     private String label;
     private double volume;
     private double weight;
-
-
     private java.time.LocalDate expirationDate;
     private FoodItemType foodItemType;
 

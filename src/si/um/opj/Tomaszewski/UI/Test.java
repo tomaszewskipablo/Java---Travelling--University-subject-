@@ -2,6 +2,11 @@ package si.um.opj.Tomaszewski.UI;
 
 import si.um.opj.Tomaszewski.logic.FoodItem;
 import si.um.opj.Tomaszewski.logic.FoodItemType;
+import si.um.opj.Tomaszewski.logic.Location;
+import si.um.opj.Tomaszewski.logic.facility.BusinessFacilitiy;
+import si.um.opj.Tomaszewski.logic.facility.Store;
+import si.um.opj.Tomaszewski.logic.facility.Warehouse;
+import si.um.opj.Tomaszewski.logic.transport.Vehicle;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -21,19 +26,19 @@ public class Test extends JFrame {
     private JTabbedPane tabbedPane1;
     private JButton deleteButton;
     private JButton editButton;
-    private JButton addButton;
+    private JButton addVehicleButton;
     private JPanel vehicleLayout;
-    private JTextField textField2;
-    private JTextField textField3;
+    private JTextField labelVehicle;
+    private JTextField volumeVehicle;
     private JButton confirmButton;
     private JRadioButton vanRadioButton;
     private JRadioButton truckRadioButton;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JComboBox chooseVehicle;
-    private JComboBox chooseVehicleAction;
+    private JTextField speedVehicle;
+    private JTextField lengthVehicle;
+    private JTextField trailsVehicle;
+    private JTextField maxVehicle;
+
+
     private JLabel numberOfTrailersLabel;
     private JLabel chooseVehicleLabel;
 
@@ -41,7 +46,7 @@ public class Test extends JFrame {
     private JTextField capacityTextBox;
     private JRadioButton warehauseRadioButton;
     private JRadioButton storeRadioButton;
-    private JList chooseFoodItem;
+
     private JLabel chooseFoodItemLabel;
     private JPanel confirmFoodButton;
     private JButton confirmFoodItemButton;
@@ -58,7 +63,7 @@ public class Test extends JFrame {
 
     private JLabel actionLabel;
     private JLabel WhereLabel;
-    private JComboBox chooseBusinessAction;
+
     private JButton submitButton;
     private JTextField labelFoodItem;
     private JTextField volumeFoodItem;
@@ -72,16 +77,49 @@ public class Test extends JFrame {
     private JButton deleteConfirmVehicleButton;
     private JButton editConfirmVehicleButton;
     private JButton confirmVehicleButton;
-    private JList list1;
-    private JList chooseBussines;
 
-    private ArrayList<FoodItem> foodItemArrayList = new ArrayList<FoodItem>();// arraylist that has only Singers
-    final private DefaultListModel<FoodItem> foodItemModel = new DefaultListModel<FoodItem>(); //creating model for jList
 
+    private JTextField labelBussines;
+    private JTextField country;
+    private JTextField city;
+
+
+    private JList warehouseToTake;
+    private JList loadStore;
+
+
+    private ArrayList<FoodItem> foodItemArrayList = new ArrayList<FoodItem>();
+    private DefaultListModel<FoodItem> foodItemModel = new DefaultListModel<FoodItem>();
+
+    private ArrayList<Store> storeArrayList = new ArrayList<Store>();
+     private DefaultListModel<Store> storeModel = new DefaultListModel<Store>();
+
+    private ArrayList<Warehouse> warehouseArrayList = new ArrayList<Warehouse>();
+     private DefaultListModel<Warehouse> warehouseModel = new DefaultListModel<Warehouse>();
+
+    private ArrayList<Vehicle> vehicleArrayList = new ArrayList<Vehicle>();
+     private DefaultListModel<Vehicle> vehicleModel = new DefaultListModel<Vehicle>();
+
+    private JList FoodItemToAdd;
+    private JList chooseFoodItem;
+    private JList loadVehicle;
+    private JList chooseVehicle;
+    private JList chooseStore;
+    private JList chooseWarehouse;
+    private JList loadWarehouse;
 
     public Test()
     {
+        // Works fine here
         chooseFoodItem.setModel(foodItemModel);
+        FoodItemToAdd.setModel(foodItemModel);
+
+
+        // ERROR for every model
+        // models works this would work FoodItemToAdd.setModel(vehicleModel), the problem is with JList
+        chooseStore.setModel(storeModel);
+        chooseWarehouse.setModel(warehouseModel);
+        chooseVehicle.setModel(vehicleModel);
 
 
 // -------------------- BUSINESS START ---------------------
@@ -138,6 +176,8 @@ public class Test extends JFrame {
                 storeRadioButton.setSelected(false);
                 capacityTextBox.setVisible(true);
                 capacityLabel.setVisible(true);
+                chooseWarehouse.setVisible(true);
+
             }
         });
         storeRadioButton.addActionListener(new ActionListener() {
@@ -146,60 +186,41 @@ public class Test extends JFrame {
                 warehauseRadioButton.setSelected(false);
                 capacityTextBox.setVisible(false);
                 capacityLabel.setVisible(false);
+                chooseStore.setVisible(true);
+            }
+        });
+        confirmBusinessButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String label = labelBussines.getText();
+                String countryS = country.getText();
+                String cityS = city.getText();
+
+                if(warehauseRadioButton.isSelected()!=true) {
+
+                    Location location = new Location(countryS, cityS);
+                    Store store = new Store(label, location);
+
+                    storeModel.addElement(store);
+                    storeArrayList.add(store);
+                }
+                else if(warehauseRadioButton.isSelected()) {
+
+                        int capacity = Integer.parseInt(capacityTextBox.getText());
+
+                        Location location = new Location(countryS, cityS);
+                        Warehouse warehouse = new Warehouse(label, location, capacity);
+
+
+                        warehouseModel.addElement(warehouse);
+                        warehouseArrayList.add(warehouse);
+                }
             }
         });
         // -------------------- BUSINESS END ---------------------
 
         // -------------------- VEHICLE START ---------------------
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                chooseVehicle.setVisible(false);
-                chooseVehicleLabel.setVisible(false);
-                confirmButton.setText("Add");
-                vehicleLayout.setVisible(true);
 
-                deleteConfirmVehicleButton.setEnabled(false);
-                deleteConfirmVehicleButton.setVisible(false);
-                confirmVehicleButton.setEnabled(true);
-                confirmVehicleButton.setVisible(true);
-                editConfirmVehicleButton.setEnabled(false);
-                editConfirmVehicleButton.setVisible(false);
-            }
-        });
-        editButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                chooseVehicle.setVisible(true);
-                chooseVehicleLabel.setVisible(true);
-                confirmButton.setText("Edit");
-                vehicleLayout.setVisible(true);
-
-                deleteConfirmVehicleButton.setEnabled(false);
-                deleteConfirmVehicleButton.setVisible(false);
-                confirmVehicleButton.setEnabled(false);
-                confirmVehicleButton.setVisible(false);
-                editConfirmVehicleButton.setEnabled(true);
-                editConfirmVehicleButton.setVisible(true);
-            }
-        });
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                chooseVehicle.setVisible(true);
-                chooseVehicleLabel.setVisible(true);
-                confirmButton.setText("Delete");
-                vehicleLayout.setVisible(true);
-
-
-                deleteConfirmVehicleButton.setEnabled(true);
-                deleteConfirmVehicleButton.setVisible(true);
-                confirmFoodItemButton.setEnabled(false);
-                confirmFoodItemButton.setVisible(false);
-                editConfirmVehicleButton.setEnabled(false);
-                editConfirmVehicleButton.setVisible(false);
-            }
-        });
         truckRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -222,10 +243,6 @@ public class Test extends JFrame {
         addFoodItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                confirmFoodItemButton.setText("Add");
-
-
-
                 chooseFoodItemLabel.setVisible(false);
 
 
@@ -240,7 +257,6 @@ public class Test extends JFrame {
         deleteFoodItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                confirmFoodItemButton.setText("Delete");
                 chooseFoodItem.setVisible(true);
                 chooseFoodItemLabel.setVisible(true);
 
@@ -278,6 +294,8 @@ public class Test extends JFrame {
                 unloadRadioButton.setSelected(false);
                 actionLabel.setText("From");
                 WhereLabel.setText("Warehouse");
+                loadWarehouse.setVisible(true);
+                loadStore.setVisible(false);
 
             }
         });
@@ -287,6 +305,8 @@ public class Test extends JFrame {
                 loadRadioButton.setSelected(false);
                 actionLabel.setText("To");
                 WhereLabel.setText("Store");
+                loadWarehouse.setVisible(false);
+                loadStore.setVisible(true);
             }
             // -------------------- VEHICLE LOAD/UNLOAD END ---------------------
         });
@@ -376,6 +396,109 @@ public class Test extends JFrame {
             });
 
 
+        addVehicleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                chooseVehicle.setVisible(false);
+                chooseVehicleLabel.setVisible(false);
+
+                vehicleLayout.setVisible(true);
+
+                deleteConfirmVehicleButton.setEnabled(false);
+                deleteConfirmVehicleButton.setVisible(false);
+                confirmVehicleButton.setEnabled(true);
+                confirmVehicleButton.setVisible(true);
+                editConfirmVehicleButton.setEnabled(false);
+                editConfirmVehicleButton.setVisible(false);
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                chooseVehicle.setVisible(true);
+                chooseVehicleLabel.setVisible(true);
+
+                vehicleLayout.setVisible(true);
+
+
+                deleteConfirmVehicleButton.setEnabled(true);
+                deleteConfirmVehicleButton.setVisible(true);
+                confirmVehicleButton.setEnabled(false);
+                confirmVehicleButton.setVisible(false);
+                editConfirmVehicleButton.setEnabled(false);
+                editConfirmVehicleButton.setVisible(false);
+            }
+        });
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                chooseVehicle.setVisible(true);
+                chooseVehicleLabel.setVisible(true);
+
+                vehicleLayout.setVisible(true);
+
+                deleteConfirmVehicleButton.setEnabled(false);
+                deleteConfirmVehicleButton.setVisible(false);
+                confirmVehicleButton.setEnabled(false);
+                confirmVehicleButton.setVisible(false);
+                editConfirmVehicleButton.setEnabled(true);
+                editConfirmVehicleButton.setVisible(true);
+            }
+        });
+        deleteConfirmBussinesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(storeRadioButton.isSelected() && chooseStore.getSelectedIndex()>=0){
+                    int id = chooseStore.getSelectedIndex();
+
+                    storeArrayList.remove(id);
+                    storeModel.remove(id);
+                }
+                else if(warehauseRadioButton.isSelected() && chooseWarehouse.getSelectedIndex()>=0){
+                    int id = chooseWarehouse.getSelectedIndex();
+
+                    warehouseArrayList.remove(id);
+                    warehouseModel.remove(id);
+                }
+            }
+        });
+        editConfirmBussinesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String label = labelBussines.getText();
+                String countryS = country.getText();
+                String cityS = city.getText();
+                //STORE
+                if(storeRadioButton.isSelected() && chooseStore.getSelectedIndex()>=0){
+                    int id = chooseStore.getSelectedIndex();
+                    Store store = storeArrayList.get(id);
+
+                    store.setName(label);
+                    Location location = new Location(countryS,cityS);
+                    store.setLocation(location);
+
+
+                }
+                //WAREHOUSE
+                else if(warehauseRadioButton.isSelected() && chooseWarehouse.getSelectedIndex()>=0){
+                    int capacity = Integer.parseInt(capacityTextBox.getText());
+
+                    int id = chooseWarehouse.getSelectedIndex();
+                    Warehouse warehouse = warehouseArrayList.get(id);
+                    Location location = new Location(countryS, cityS);
+
+                    warehouse.setName(label);
+                    warehouse.setLocation(location);
+                    warehouse.setCapacity(capacity);
+                }
+            }
+        });
+        confirmVehicleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                
+            }
+        });
     }
 
 
