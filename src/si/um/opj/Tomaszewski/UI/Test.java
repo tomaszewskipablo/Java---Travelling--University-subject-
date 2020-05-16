@@ -3,6 +3,9 @@ package si.um.opj.Tomaszewski.UI;
 import si.um.opj.Tomaszewski.logic.FoodItem;
 import si.um.opj.Tomaszewski.logic.FoodItemType;
 import si.um.opj.Tomaszewski.logic.Location;
+import si.um.opj.Tomaszewski.logic.exceptions.CapacityExceededException;
+import si.um.opj.Tomaszewski.logic.exceptions.FoodItemTypeException;
+import si.um.opj.Tomaszewski.logic.exceptions.VolumeExceededException;
 import si.um.opj.Tomaszewski.logic.facility.BusinessFacilitiy;
 import si.um.opj.Tomaszewski.logic.facility.Store;
 import si.um.opj.Tomaszewski.logic.facility.Warehouse;
@@ -86,8 +89,6 @@ public class Test extends JFrame {
     private JTextField city;
 
 
-    private JList warehouseToTake;
-    private JList loadStore;
 
 
     private ArrayList<FoodItem> foodItemArrayList = new ArrayList<FoodItem>();
@@ -105,6 +106,12 @@ public class Test extends JFrame {
     private ArrayList<Van> vanArrayList = new ArrayList<Van>();
     private DefaultListModel<Van> vanModel = new DefaultListModel<Van>();
 
+
+
+    private JList warehouseToTake;
+    private JList loadStore;
+
+
     private JList FoodItemToAdd;
     private JList chooseFoodItem;
     private JList loadVehicle;
@@ -115,6 +122,9 @@ public class Test extends JFrame {
     private JList chooseVan;
     private JComboBox foodType;
     private JLabel foodTypeLabel;
+    private JList vanToLoad;
+    private JButton adding;
+    private JButton deleting;
 
     public Test()
     {
@@ -127,8 +137,14 @@ public class Test extends JFrame {
         // models works this would work FoodItemToAdd.setModel(vehicleModel), the problem is with JList
         chooseStore.setModel(storeModel);
         chooseWarehouse.setModel(warehouseModel);
+        warehouseToTake.setModel(warehouseModel);
         chooseVehicle.setModel(truckModel);
         chooseVan.setModel(vanModel);
+        loadVehicle.setModel(truckModel);
+        vanToLoad.setModel(vanModel);
+        loadStore.setModel(storeModel);
+        loadWarehouse.setModel(warehouseModel);
+
 
 
 // -------------------- BUSINESS START ---------------------
@@ -308,10 +324,11 @@ public class Test extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 unloadRadioButton.setSelected(false);
-                actionLabel.setText("From");
+                actionLabel.setText("To");
+                actionLabel.setVisible(true);
                 WhereLabel.setText("Warehouse");
                 loadWarehouse.setVisible(true);
-                loadStore.setVisible(false);
+                loadStore.setVisible(true);
 
             }
         });
@@ -319,10 +336,10 @@ public class Test extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 loadRadioButton.setSelected(false);
-                actionLabel.setText("To");
+                actionLabel.setVisible(false);
                 WhereLabel.setText("Store");
                 loadWarehouse.setVisible(false);
-                loadStore.setVisible(true);
+                loadStore.setVisible(false);
             }
             // -------------------- VEHICLE LOAD/UNLOAD END ---------------------
         });
@@ -593,6 +610,98 @@ public class Test extends JFrame {
                     van.setVolume(volume);
                     van.setAverageSpeed(speed);
                     van.setFoodItemType(foodItemType);
+                }
+            }
+        });
+        adding.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(FoodItemToAdd.getSelectedIndex()>=0 && warehouseToTake.getSelectedIndex()>=0) {
+
+                    int id = warehouseToTake.getSelectedIndex();
+                    Warehouse warehouse = warehouseArrayList.get(id);
+
+                    int idFood = FoodItemToAdd.getSelectedIndex();
+                    FoodItem foodItem = foodItemArrayList.get(idFood);
+
+                    warehouse.addItem(foodItem);
+                }
+
+            }
+        });
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(loadRadioButton.isSelected())
+                {
+                        if(loadVehicle.getSelectedIndex()>=0 && loadWarehouse.getSelectedIndex()>=0) {
+                            int id = loadVehicle.getSelectedIndex();
+                            Truck truck = truckArrayList.get(id);
+
+                            int idW = loadWarehouse.getSelectedIndex();
+                            Warehouse warehouse = warehouseArrayList.get(idW);
+
+                            try {
+                                warehouse.acceptVehicle(truck);
+                            } catch (CapacityExceededException e) {
+                                e.printStackTrace();
+                            } catch (VolumeExceededException e) {
+                                e.printStackTrace();
+                            } catch (FoodItemTypeException e) {
+                                e.printStackTrace();
+                        }
+                    }
+                    else if(vanToLoad.getSelectedIndex()>=0 && loadWarehouse.getSelectedIndex()>=0) {
+                        int id = vanToLoad.getSelectedIndex();
+                        Van van = vanArrayList.get(id);
+
+                        int idW = loadWarehouse.getSelectedIndex();
+                        Warehouse warehouse = warehouseArrayList.get(idW);
+
+                        try {
+                            warehouse.acceptVehicle(van);
+                        } catch (CapacityExceededException e) {
+                            e.printStackTrace();
+                        } catch (VolumeExceededException e) {
+                            e.printStackTrace();
+                        } catch (FoodItemTypeException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                        else if(vanToLoad.getSelectedIndex()>=0 && loadStore.getSelectedIndex()>=0) {
+                            int id = vanToLoad.getSelectedIndex();
+                            Van van = vanArrayList.get(id);
+
+                            int idW = loadStore.getSelectedIndex();
+                            Store store = storeArrayList.get(idW);
+
+                            store.acceptVehicle(van);
+                        }
+                        else if(loadVehicle.getSelectedIndex()>=0 && loadStore.getSelectedIndex()>=0) {
+                            int id = loadVehicle.getSelectedIndex();
+                            Truck truck = truckArrayList.get(id);
+
+                            int idW = loadStore.getSelectedIndex();
+                            Store store = storeArrayList.get(idW);
+
+                            store.acceptVehicle(truck);
+                        }
+                }
+                else if(unloadRadioButton.isSelected()) {
+                    if(unloadRadioButton.isSelected() && loadVehicle.getSelectedIndex() >=0)
+                    {
+                        int idW = loadVehicle.getSelectedIndex();
+                        Truck truck = truckArrayList.get(idW);
+
+                        truck.unloadFoodItems();
+                    }
+                    else if(unloadRadioButton.isSelected() && vanToLoad.getSelectedIndex() >=0)
+                    {
+                        int idW = vanToLoad.getSelectedIndex();
+                        Van van = vanArrayList.get(idW);
+
+                        van.unloadFoodItems();
+                    }
                 }
             }
         });
